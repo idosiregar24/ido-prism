@@ -1,0 +1,424 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!--  HEADER CARD  -->
+        <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#1A2E22"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.2"
+                    android:text="ido-prism"
+                    android:textAllCaps="true"
+                    android:textColor="#6FCF97"
+                    android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Kalkulator\nGeometri"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#6FCF97" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <!--  SECTION: BANGUN DATAR  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:letterSpacing="0.25"
+            android:text="BANGUN DATAR"
+            android:textAllCaps="true"
+            android:textColor="#9BAAA0"
+            android:textSize="10sp" />
+        <!--  CARD SEGITIGA  -->
+        <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <!--  Card Header  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_icon_circle"
+                        android:gravity="center"
+                        android:text="△"
+                        android:textColor="#1A2E22"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Luas Segitiga"
+                            android:textColor="#1A2E22"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="monospace"
+                            android:text="L = ½ × a × t"
+                            android:textColor="#9BAAA0"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--  Input Row  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Alas (a)"
+                            android:textColor="#9BAAA0"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/etAlas"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textColor="#1A2E22"
+                            android:textColorHint="#C5D4CC"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Tinggi (t)"
+                            android:textColor="#9BAAA0"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/etTinggiSegitiga"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textColor="#1A2E22"
+                            android:textColorHint="#C5D4CC"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnHitungSegitiga"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="#1A2E22"
+                    android:text="Hitung"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <!--  Result  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_result"
+                    android:gravity="center_vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Luas "
+                        android:textColor="#6FCF97"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvHasilSegitiga"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="—"
+                        android:textColor="#1A2E22"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <!--  SECTION: BANGUN RUANG  -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:letterSpacing="0.25"
+            android:text="BANGUN RUANG"
+            android:textAllCaps="true"
+            android:textColor="#9BAAA0"
+            android:textSize="10sp" />
+        <!--  CARD BALOK  -->
+        <androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <!--  Card Header  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_icon_circle"
+                        android:gravity="center"
+                        android:text="▣"
+                        android:textColor="#1A2E22"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Volume Balok"
+                            android:textColor="#1A2E22"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="monospace"
+                            android:text="V = p × l × t"
+                            android:textColor="#9BAAA0"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--  Input Row: Panjang + Lebar  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Panjang (p)"
+                            android:textColor="#9BAAA0"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/etPanjang"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textColor="#1A2E22"
+                            android:textColorHint="#C5D4CC"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Lebar (l)"
+                            android:textColor="#9BAAA0"
+                            android:textSize="11sp" />
+
+                        <EditText
+                            android:id="@+id/etLebar"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_input"
+                            android:gravity="center"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textColor="#1A2E22"
+                            android:textColorHint="#C5D4CC"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--  Input: Tinggi  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Tinggi (t)"
+                        android:textColor="#9BAAA0"
+                        android:textSize="11sp" />
+
+                    <EditText
+                        android:id="@+id/etTinggiBalok"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColor="#1A2E22"
+                        android:textColorHint="#C5D4CC"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnHitungBalok"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="#1A2E22"
+                    android:text="Hitung"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <!--  Result  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_result"
+                    android:gravity="center_vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Volume "
+                        android:textColor="#6FCF97"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvHasilBalok"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="—"
+                        android:textColor="#1A2E22"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
