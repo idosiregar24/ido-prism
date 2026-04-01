@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Idoprism">
         <activity
+            android:name=".TugasPertemuan3.WelcomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TugasPertemuan3.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
