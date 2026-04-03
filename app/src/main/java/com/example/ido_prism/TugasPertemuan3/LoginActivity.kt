@@ -2,12 +2,9 @@ package com.example.ido_prism.TugasPertemuan3
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.ido_prism.R
 import com.example.ido_prism.databinding.ActivityLoginBinding
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -20,7 +17,16 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
 
-            val username = binding.etUsername.text.toString()
+            val username = binding.etUsername.text.toString().trim()
+
+            if (username.isEmpty()) {
+                Toast.makeText(
+                    this,
+                    "Username tidak boleh kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
 
             val intent = Intent(this, WelcomeActivity::class.java)
             intent.putExtra("USERNAME", username)
@@ -28,5 +34,4 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }
