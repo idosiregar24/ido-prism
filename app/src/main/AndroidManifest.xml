@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Idoprism">
         <activity
+            android:name=".TugasPertemuan4.DashboardGuruActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TugasPertemuan4.DashboardOrangTuaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TugasPertemuan4.MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TugasPertemuan2.GeometricActivity"
+            android:exported="false" />
+        <activity
             android:name=".TugasPertemuan3.WelcomeActivity"
             android:exported="false" />
         <activity

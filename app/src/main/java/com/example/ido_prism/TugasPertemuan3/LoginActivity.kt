@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ido_prism.TugasPertemuan4.MenuActivity
 import com.example.ido_prism.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, WelcomeActivity::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
             intent.putExtra("USERNAME", username)
 
             startActivity(intent)

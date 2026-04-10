@@ -1,471 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F6F5"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#F8F9FA"
+    tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+    android:layout_width="150dp"
+    android:layout_height="110dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="24dp"
+    android:layout_marginBottom="16dp"
+    android:src="@drawable/logo_difablecare"/>
+
+    <TextView
+    android:id="@+id/tvDashboardTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Selamat Datang, Pengguna"
+    android:textAlignment="center"
+    android:textColor="#1D2A24"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    />
+
+    <TextView
+        android:id="@+id/tvDashboardDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="Platform edukasi dan pemantauan perkembangan anak berkebutuhan khusus."
+        android:textAlignment="center"
+        android:textColor="#6B7280"
+        android:textSize="14sp" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#1A2E22"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBangunRuang"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#1D2A24"
+        android:text="Kalkulator Edukasi Geometri"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="24dp">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCustom1"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#0D6EFD"
+        android:text="Profil &amp; Pemantauan Anak"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp" />
 
-                <TextView
-                    android:id="@+id/tvHeaderSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0.2"
-                    android:text="ido-prism"
-                    android:textAllCaps="true"
-                    android:textColor="#6FCF97"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCustom2"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#0D6EFD"
+        android:text="Jadwal &amp; Layanan Terapi"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp" />
 
-                <TextView
-                    android:id="@+id/tvHeaderTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:lineSpacingExtra="2dp"
-                    android:text="Kalkulator\nGeometri"
-                    android:textColor="#FFFFFF"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvHeaderSubtitle" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-                <View
-                    android:id="@+id/vHeaderLine"
-                    android:layout_width="40dp"
-                    android:layout_height="3dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#6FCF97"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvHeaderTitle" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:text="Keluar Akun"
+        android:textAllCaps="false"
+        android:textColor="#DC3545"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:strokeColor="#DC3545"
+        app:strokeWidth="2dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tvSectionBangunDatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:letterSpacing="0.25"
-            android:text="BANGUN DATAR"
-            android:textAllCaps="true"
-            android:textColor="#9BAAA0"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardHeader" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSegitiga"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSectionBangunDatar">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/iconSegitiga"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_icon_circle"
-                    android:gravity="center"
-                    android:text="△"
-                    android:textColor="#1A2E22"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/titleSegitiga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Luas Segitiga"
-                    android:textColor="#1A2E22"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/formulaSegitiga"
-                    app:layout_constraintStart_toEndOf="@id/iconSegitiga"
-                    app:layout_constraintTop_toTopOf="@id/iconSegitiga"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <TextView
-                    android:id="@+id/formulaSegitiga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="monospace"
-                    android:text="L = ½ × a × t"
-                    android:textColor="#9BAAA0"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@id/iconSegitiga"
-                    app:layout_constraintStart_toEndOf="@id/iconSegitiga"
-                    app:layout_constraintTop_toBottomOf="@id/titleSegitiga" />
-
-                <TextView
-                    android:id="@+id/labelAlas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Alas (a)"
-                    android:textColor="#9BAAA0"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toTopOf="@id/etAlas"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iconSegitiga" />
-
-                <EditText
-                    android:id="@+id/etAlas"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_input"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColor="#1A2E22"
-                    android:textColorHint="#C5D4CC"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@id/etTinggiSegitiga"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelAlas" />
-
-                <TextView
-                    android:id="@+id/labelTinggiSegitiga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Tinggi (t)"
-                    android:textColor="#9BAAA0"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toTopOf="@id/etTinggiSegitiga"
-                    app:layout_constraintStart_toStartOf="@id/etTinggiSegitiga" />
-
-                <EditText
-                    android:id="@+id/etTinggiSegitiga"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="4dp"
-                    android:background="@drawable/bg_input"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColor="#1A2E22"
-                    android:textColorHint="#C5D4CC"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/etAlas"
-                    app:layout_constraintTop_toTopOf="@id/etAlas" />
-
-                <Button
-                    android:id="@+id/btnHitungSegitiga"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="#1A2E22"
-                    android:text="Hitung"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etAlas" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clResultSegitiga"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_result"
-                    android:padding="14dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnHitungSegitiga">
-
-                    <TextView
-                        android:id="@+id/tvLabelLuas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Luas "
-                        android:textColor="#6FCF97"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvHasilSegitiga"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="—"
-                        android:textColor="#1A2E22"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/tvLabelLuas"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/tvSectionBangunRuang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:letterSpacing="0.25"
-            android:text="BANGUN RUANG"
-            android:textAllCaps="true"
-            android:textColor="#9BAAA0"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardSegitiga" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardBalok"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSectionBangunRuang">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/iconBalok"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/bg_icon_circle"
-                    android:gravity="center"
-                    android:text="▣"
-                    android:textColor="#1A2E22"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/titleBalok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Volume Balok"
-                    android:textColor="#1A2E22"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/formulaBalok"
-                    app:layout_constraintStart_toEndOf="@id/iconBalok"
-                    app:layout_constraintTop_toTopOf="@id/iconBalok"
-                    app:layout_constraintVertical_chainStyle="packed" />
-
-                <TextView
-                    android:id="@+id/formulaBalok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="monospace"
-                    android:text="V = p × l × t"
-                    android:textColor="#9BAAA0"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@id/iconBalok"
-                    app:layout_constraintStart_toEndOf="@id/iconBalok"
-                    app:layout_constraintTop_toBottomOf="@id/titleBalok" />
-
-                <TextView
-                    android:id="@+id/labelPanjang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Panjang (p)"
-                    android:textColor="#9BAAA0"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toTopOf="@id/etPanjang"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/iconBalok" />
-
-                <EditText
-                    android:id="@+id/etPanjang"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_input"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColor="#1A2E22"
-                    android:textColorHint="#C5D4CC"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@id/etLebar"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelPanjang" />
-
-                <TextView
-                    android:id="@+id/labelLebar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Lebar (l)"
-                    android:textColor="#9BAAA0"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toTopOf="@id/etLebar"
-                    app:layout_constraintStart_toStartOf="@id/etLebar" />
-
-                <EditText
-                    android:id="@+id/etLebar"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="4dp"
-                    android:background="@drawable/bg_input"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColor="#1A2E22"
-                    android:textColorHint="#C5D4CC"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/etPanjang"
-                    app:layout_constraintTop_toTopOf="@id/etPanjang" />
-
-                <TextView
-                    android:id="@+id/labelTinggiBalok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Tinggi (t)"
-                    android:textColor="#9BAAA0"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toTopOf="@id/etTinggiBalok"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etPanjang" />
-
-                <EditText
-                    android:id="@+id/etTinggiBalok"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/bg_input"
-                    android:gravity="center"
-                    android:hint="0"
-                    android:inputType="numberDecimal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:textColor="#1A2E22"
-                    android:textColorHint="#C5D4CC"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/labelTinggiBalok" />
-
-                <Button
-                    android:id="@+id/btnHitungBalok"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
-                    android:backgroundTint="#1A2E22"
-                    android:text="Hitung"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etTinggiBalok" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/clResultBalok"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_result"
-                    android:padding="14dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnHitungBalok">
-
-                    <TextView
-                        android:id="@+id/tvLabelVolume"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Volume "
-                        android:textColor="#6FCF97"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvHasilBalok"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="—"
-                        android:textColor="#1A2E22"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/tvLabelVolume"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</LinearLayout>

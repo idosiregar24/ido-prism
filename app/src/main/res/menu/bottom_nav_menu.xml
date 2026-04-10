@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_beranda"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Beranda"/>
+
+    <item
+        android:id="@+id/nav_assesment"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Assesment"/>
+
+    <item
+        android:id="@+id/nav_aktivitas"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Aktivitas"/>
+
+    <item
+        android:id="@+id/nav_progress"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Progress"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="Profile"/>
+
+</menu>
