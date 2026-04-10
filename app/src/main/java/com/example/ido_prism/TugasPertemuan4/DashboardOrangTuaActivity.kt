@@ -9,7 +9,6 @@ import com.example.ido_prism.databinding.ActivityDashboardOrangTuaBinding
 
 class DashboardOrangTuaActivity : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityDashboardOrangTuaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +27,12 @@ class DashboardOrangTuaActivity : AppCompatActivity() {
         val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
         val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
 
+        // PERBAIKAN: Arahkan ke TextView yang baru kita buat di XML
         if (judulDariMain != null) {
-            binding.tvParentName.text = judulDariMain
+            binding.tvImportedTitle.text = judulDariMain
         }
         if (deskripsiDariMain != null) {
-            binding.tvChildDesc.text = deskripsiDariMain
+            binding.tvImportedDesc.text = deskripsiDariMain
         }
     }
 }

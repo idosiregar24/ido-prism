@@ -18,18 +18,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="24dp">
 
+            <TextView
+                android:id="@+id/tvImportedTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Memuat Judul..."
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvImportedDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Memuat deskripsi..."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/tvImportedTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/colorInputBg"
                 app:cardBackgroundColor="@color/colorCard"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvImportedDesc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
