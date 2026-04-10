@@ -5,18 +5,34 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.ido_prism.R
+import com.example.ido_prism.databinding.ActivityDashboardOrangTuaBinding
 
 class DashboardOrangTuaActivity : AppCompatActivity() {
+
+
+    private lateinit var binding: ActivityDashboardOrangTuaBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_dashboard_orang_tua)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        binding = ActivityDashboardOrangTuaBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
+        val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
+
+        if (judulDariMain != null) {
+            binding.tvParentName.text = judulDariMain
+        }
+        if (deskripsiDariMain != null) {
+            binding.tvChildDesc.text = deskripsiDariMain
         }
     }
 }

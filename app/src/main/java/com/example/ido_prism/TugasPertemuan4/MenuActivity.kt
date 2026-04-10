@@ -27,11 +27,9 @@ class MenuActivity : AppCompatActivity() {
         val username = intent.getStringExtra("USERNAME") ?: "Pengguna"
         judulUtama = "Selamat Datang, $username"
 
-        // Hubungkan data ke UI (sesuai dengan id di ConstraintLayout sebelumnya)
         binding.tvDashboardTitle.text = judulUtama
         binding.tvDashboardDesc.text = deskripsiUtama
 
-        // Panggil fungsi setup untuk mengatur semua tombol
         setupClickListeners()
     }
 
@@ -45,9 +43,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.btnDashboardOrangTua.setOnClickListener {
-            // Perhatian: Pastikan nama Activity di sini sesuai dengan nama file aslinya.
-            // Sebelumnya tertulis 'DashboardOrantTuaActivity' (ada typo 'Orant').
-            navigateTo(DashboardOrangTuaActivity::class.java)
+          navigateTo(DashboardOrangTuaActivity::class.java)
         }
 
         binding.btnLogout.setOnClickListener {
@@ -68,9 +64,6 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Fungsi khusus untuk memunculkan dialog logout agar blok onCreate tidak membengkak.
-     */
     private fun showLogoutConfirmation() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Konfirmasi")
