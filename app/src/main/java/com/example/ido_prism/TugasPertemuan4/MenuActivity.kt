@@ -14,7 +14,6 @@ class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
 
-    // Simpan data sebagai properti kelas agar mudah diakses oleh fungsi lain
     private lateinit var judulUtama: String
     private val deskripsiUtama: String = "Platform edukasi dan pemantauan perkembangan anak berkebutuhan khusus."
 
@@ -51,10 +50,6 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Fungsi reusable untuk menangani perpindahan halaman beserta datanya.
-     * Menggunakan Kotlin Scope Functions (apply & also) agar penulisan lebih ringkas.
-     */
     private fun navigateTo(targetActivity: Class<*>) {
         Intent(this, targetActivity).apply {
             putExtra("EXTRA_JUDUL", judulUtama)
