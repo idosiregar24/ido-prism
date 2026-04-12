@@ -64,19 +64,21 @@ class MenuActivity : AppCompatActivity() {
             .setTitle("Konfirmasi")
             .setMessage("Apakah Anda yakin ingin keluar akun?")
             .setPositiveButton("Ya") { _, _ ->
-                Intent(this, LoginActivity::class.java).apply {
+
+                Snackbar.make(binding.root, "Permintaan Anda Disetujui", Snackbar.LENGTH_SHORT).show()
+
+                // Intent juga harus diperjelas Context-nya menggunakan this@MenuActivity
+                Intent(this@MenuActivity, LoginActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }.also { intent ->
                     startActivity(intent)
                     finish()
                 }
             }
-            .setNegativeButton("Tidak") { _, _ ->
-                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT)
-                    .setAction("Tutup") {
-                        Log.e("Info Snackbar", "Snackbar ditutup")
-                    }
-                    .show()
+            .setNegativeButton("Tidak") { dialog, _ ->
+                dialog.dismiss()
+                // Snackbar pembatalan yang normal
+                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
             }
             .show()
     }
