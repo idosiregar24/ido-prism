@@ -23,7 +23,7 @@
     android:layout_height="wrap_content"
     android:text="Selamat Datang, Pengguna"
     android:textAlignment="center"
-    android:textColor="#1D2A24"
+    android:textColor="@color/text_primary"
     android:textSize="26sp"
     android:textStyle="bold"
     />
@@ -36,7 +36,7 @@
         android:layout_marginBottom="40dp"
         android:text="Platform edukasi dan pemantauan perkembangan anak berkebutuhan khusus."
         android:textAlignment="center"
-        android:textColor="#6B7280"
+        android:textColor="@color/text_primary"
         android:textSize="14sp" />
 
     <com.google.android.material.button.MaterialButton
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#1D2A24"
+        android:backgroundTint="@color/yellowPrimary"
         android:text="Kalkulator Edukasi Geometri"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#0D6EFD"
+        android:backgroundTint="@color/blue_primary"
         android:text="Profil &amp; Pemantauan Anak"
         android:textAllCaps="false"
         android:textSize="16sp"
@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#0D6EFD"
+        android:backgroundTint="@color/blue_primary"
         android:text="Jadwal &amp; Layanan Terapi"
         android:textAllCaps="false"
         android:textSize="16sp"

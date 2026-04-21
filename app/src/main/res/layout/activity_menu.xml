@@ -51,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
-        app:backgroundTint="@color/text_primary"
+        app:backgroundTint="@color/red"
         android:text="Kalkulator Edukasi Geometri"
         android:textAllCaps="false"
         android:textSize="16sp"
