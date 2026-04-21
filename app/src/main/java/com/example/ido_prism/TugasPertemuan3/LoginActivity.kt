@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ido_prism.TugasPertemuan4.MenuActivity
 import com.example.ido_prism.databinding.ActivityLoginBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -16,9 +17,13 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
         binding.btnLogin.setOnClickListener {
 
             val username = binding.etUsername.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+
 
             if (username.isEmpty()) {
                 Toast.makeText(
@@ -29,10 +34,30 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val intent = Intent(this, MenuActivity::class.java)
-            intent.putExtra("USERNAME", username)
+            if (username == password && password.isNotEmpty()){
 
-            startActivity(intent)
+                val editor = sharedPref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.apply()
+
+                val intent = Intent(this, MenuActivity::class.java)
+                intent.putExtra("USERNAME", username)
+
+                startActivity(intent)
+            }
+            else {
+                MaterialAlertDialogBuilder(this)
+                    .setTitle("Gagal Login")
+                    .setMessage("Silahkan Coba Lagi")
+                    .setPositiveButton("Ya") { dialog, _ ->
+                        val editor = sharedPref.edit()
+                        editor.clear()
+                        editor.apply()
+
+                        dialog.dismiss()
+                    }
+                    .show()
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ido_prism.TugasPertemuan4
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +14,16 @@ import com.google.android.material.snackbar.Snackbar
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMenuBinding
-
     private lateinit var judulUtama: String
     private val deskripsiUtama: String = "Platform edukasi dan pemantauan perkembangan anak berkebutuhan khusus."
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val sharedPreferences = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -65,9 +70,14 @@ class MenuActivity : AppCompatActivity() {
             .setMessage("Apakah Anda yakin ingin keluar akun?")
             .setPositiveButton("Ya") { _, _ ->
 
+                val sharedPreferences = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+
+                editor.putBoolean("isLogin", false)
+                editor.apply()
+
                 Snackbar.make(binding.root, "Permintaan Anda Disetujui", Snackbar.LENGTH_SHORT).show()
 
-                // Intent juga harus diperjelas Context-nya menggunakan this@MenuActivity
                 Intent(this@MenuActivity, LoginActivity::class.java).apply {
                     flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }.also { intent ->
@@ -77,7 +87,6 @@ class MenuActivity : AppCompatActivity() {
             }
             .setNegativeButton("Tidak") { dialog, _ ->
                 dialog.dismiss()
-                // Snackbar pembatalan yang normal
                 Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
             }
             .show()
