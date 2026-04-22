@@ -55,7 +55,7 @@ class MenuActivity : AppCompatActivity() {
             showLogoutConfirmation()
         }
 
-        binding.btnWebBindaDesa.setOnClickListener {
+        binding.btnWebBinaDesa.setOnClickListener {
             navigateTo(WebViewBinaDesaActivity::class.java)
         }
     }
