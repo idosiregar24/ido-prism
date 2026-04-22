@@ -100,7 +100,7 @@
         android:id="@+id/btnWebBindaDesa"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:text="Masuk Ke Web Binda Desa"
+        android:text="Masuk Ke Web Bina Desa"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
