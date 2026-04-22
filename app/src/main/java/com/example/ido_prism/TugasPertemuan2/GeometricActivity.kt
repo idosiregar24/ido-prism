@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ido_prism.databinding.ActivityGeometriBinding
 
 class GeometricActivity : AppCompatActivity() {
 
@@ -30,18 +31,42 @@ class GeometricActivity : AppCompatActivity() {
     private lateinit var btnHitungBalok: Button
     private lateinit var tvHasilBalok: TextView
 
+    private lateinit var binding: ActivityGeometriBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_geometri)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityGeometriBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Toolbar Setup
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = "Kalkulator Geometri"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
         }
+
+        binding.toolbar.navigationIcon?.setTint(resources.getColor(android.R.color.white, theme))
+
+        val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
+        val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
+
+        if (judulDariMain != null) {
+            binding.tvHeaderTitle.text = judulDariMain
+        }
+        if (deskripsiDariMain != null) {
+            binding.tvHeaderSubtitle.text = deskripsiDariMain
+        }
+
         initViews()
         setupListeners()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 
     // Menghubungkan variabel Kotlin ke komponen XML berdasarkan ID

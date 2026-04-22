@@ -52,15 +52,17 @@
 
     <TextView
         android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="57dp"
         android:layout_marginTop="4dp"
         android:letterSpacing="0.1"
-        android:text="Tagline atau Deskripsi Singkat"
+        android:textAlignment="center"
+        android:text="Aplikasi untuk Orang tua dan Guru dengan Anak Berbutuh Khusus"
         android:textColor="@color/colorAccent"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvBrandName"
-        app:layout_constraintStart_toStartOf="@+id/tvBrandName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBrandName" />
 
     <ProgressBar

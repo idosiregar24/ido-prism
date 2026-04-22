@@ -38,7 +38,6 @@ class DashboardGuruActivity : AppCompatActivity() {
         val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
         val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
 
-        // PERBAIKAN: Arahkan ke TextView yang baru kita buat di XML
         if (judulDariMain != null) {
             binding.tvImportedTitle.text = judulDariMain
         }
