@@ -81,15 +81,31 @@
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
-        app:backgroundTint="@color/colorPrimary"
         android:text="Masuk Ke Dashboard Orang Tua"
         android:textAllCaps="false"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:backgroundTint="@color/colorPrimary"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnDashboardGuru" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWebBindaDesa"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="Masuk Ke Web Binda Desa"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/colorPrimary"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDashboardOrangTua" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"

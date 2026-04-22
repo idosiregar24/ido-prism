@@ -9,10 +9,26 @@
     android:background="@color/bg_main"
     tools:context=".TugasPertemuan4.DashboardGuruActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/blue_primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@android:color/white"
+            app:layout_scrollFlags="scroll|enterAlways"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -43,6 +59,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvImportedTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardProfile"
                 android:layout_width="0dp"
@@ -113,6 +130,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Row 1 Menu -->
             <LinearLayout
                 android:id="@+id/menuTambahData"
                 android:layout_width="0dp"
@@ -266,6 +284,7 @@
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
 
+            <!-- Row 2 Menu -->
             <LinearLayout
                 android:id="@+id/menuPembelajaran"
                 android:layout_width="0dp"

@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ido_prism.TugasPertemuan2.GeometricActivity
 import com.example.ido_prism.TugasPertemuan3.LoginActivity
+import com.example.ido_prism.TugasPertemuan6.WebViewBinaDesaActivity
 import com.example.ido_prism.databinding.ActivityMenuBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -52,6 +53,10 @@ class MenuActivity : AppCompatActivity() {
 
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmation()
+        }
+
+        binding.btnWebBindaDesa.setOnClickListener {
+            navigateTo(WebViewBinaDesaActivity::class.java)
         }
     }
 

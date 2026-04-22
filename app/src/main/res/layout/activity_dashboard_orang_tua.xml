@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,16 +8,29 @@
     android:background="@color/colorBackground"
     tools:context=".TugasPertemuan4.DashboardOrangTuaActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/blue_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@android:color/white"
+        app:titleTextColor="@android:color/white"
+        app:subtitleTextColor="@android:color/white" />
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_marginTop="32dp">
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/ivNotification"
@@ -54,6 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvImportedTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvBanner"
                 android:layout_width="0dp"
@@ -124,20 +137,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 app:cardBackgroundColor="@color/colorCard"
                 app:layout_constraintTop_toBottomOf="@id/cvBanner"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="564dp"
+                    android:layout_height="wrap_content"
                     android:background="@color/yellowPrimary"
-                    android:paddingTop="20dp">
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp">
 
                     <ImageView
                         android:id="@+id/ivBookIcon"
@@ -186,7 +198,6 @@
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ilustrasi_anak"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvProgressSubtitle" />
@@ -198,4 +209,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

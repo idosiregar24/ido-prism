@@ -1,6 +1,7 @@
 package com.example.ido_prism.TugasPertemuan4
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,6 +25,14 @@ class DashboardOrangTuaActivity : AppCompatActivity() {
             insets
         }
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = "Dashboard Orang Tua"
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+        binding.toolbar.navigationIcon?.setTint(resources.getColor(android.R.color.white, theme))
+
         val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
         val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
 
@@ -32,6 +41,16 @@ class DashboardOrangTuaActivity : AppCompatActivity() {
         }
         if (deskripsiDariMain != null) {
             binding.tvImportedDesc.text = deskripsiDariMain
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
