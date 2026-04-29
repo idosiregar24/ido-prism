@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ido_prism.BaseActivity
 import com.example.ido_prism.R
 import com.example.ido_prism.TugasPertemuan3.LoginActivity
 import com.example.ido_prism.TugasPertemuan4.MenuActivity
@@ -30,7 +31,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
             if (isLogin) {
-                val intent = Intent(this@SplashScreenActivity, MenuActivity::class.java)
+                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
                 startActivity(intent)
             } else {
                 val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)

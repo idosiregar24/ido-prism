@@ -38,7 +38,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".BaseActivity"
+            android:name=".TugasPertemuan6.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TugasPertemuan6.SplashScreenActivity"
+            android:name=".BaseActivity"
             android:exported="false" />
     </application>
 

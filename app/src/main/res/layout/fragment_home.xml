@@ -14,17 +14,18 @@
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="110dp"
+            android:id="@+id/ivLogoDesa"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/logo_bina_desa" />
+            android:layout_marginTop="16dp"
+            android:src="@drawable/logo_difablecare" />
 
         <TextView
             android:id="@+id/tvDashboardTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:text="Bina Desa Balam Sempurna"
             android:textAlignment="center"
             android:textColor="@color/blue_primary"
@@ -55,39 +56,46 @@
             app:cornerRadius="12dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCustom1"
+            android:id="@+id/btnDashboardGuru"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/blue_primary"
-            android:text="Profil &amp; Pemantauan Anak"
+            android:text="Dashboard Guru"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp" />
+            android:textColor="@color/blue_primary"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/blue_primary" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCustom2"
+            android:id="@+id/btnDashboardOrangTua"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/blue_primary"
-            android:text="Jadwal &amp; Layanan Terapi"
+            android:text="Dashboard Orang Tua"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp" />
+            android:textColor="@color/blue_primary"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/blue_primary" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWebBinaDesa"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/blue_primary"
-            android:text="Web Bina Desa"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Kunjungi Website Bina Desa"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textColor="@color/red" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/text_secondary"
+            android:text="Logout Akun"
+            android:textAllCaps="false"
             app:cornerRadius="12dp" />
 
     </LinearLayout>

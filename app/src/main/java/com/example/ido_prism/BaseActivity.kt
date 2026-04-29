@@ -20,15 +20,16 @@ class BaseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+        
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Set bottom padding to 0 to avoid gap below BottomNavigation
+            // Bottom padding diset ke 0 agar Bottom Navigation menempel ke bawah layar
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
 
-        // Default Fragment
+        // Digunakan ketika kita ingin menampilkan fragment pertama kali muncul pada saat membuka
+        // Base Activity
         replaceFragment(HomeFragment())
 
         binding.bottomNavView.setOnItemSelectedListener {
@@ -52,7 +53,8 @@ class BaseActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(binding.fragmentContainer.id, fragment)
+            // .addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi
             .commit()
     }
 }
