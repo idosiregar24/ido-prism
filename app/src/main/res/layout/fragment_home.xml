@@ -50,6 +50,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/red"
             android:text="Kalkulator Edukasi Geometri"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -81,20 +82,24 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWebBinaDesa"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_marginBottom="32dp"
             android:text="Kunjungi Website Bina Desa"
             android:textAllCaps="false"
-            android:textColor="@color/red" />
+            android:textColor="@color/blue_primary"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/blue_primary"
+            app:strokeWidth="1dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:backgroundTint="@color/text_secondary"
+            android:backgroundTint="@color/red"
             android:text="Logout Akun"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             app:cornerRadius="12dp" />
 
