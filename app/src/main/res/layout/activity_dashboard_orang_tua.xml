@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Memuat deskripsi..."
-                android:textColor="@color/red"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/tvImportedTitle"
                 app:layout_constraintStart_toStartOf="parent"

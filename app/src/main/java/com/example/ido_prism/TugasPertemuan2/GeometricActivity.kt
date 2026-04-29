@@ -51,10 +51,14 @@ class GeometricActivity : AppCompatActivity() {
         binding.toolbar.navigationIcon?.setTint(resources.getColor(android.R.color.white, theme))
 
         val judulDariMain = intent.getStringExtra("EXTRA_JUDUL")
+        val deskripsiDariMain = intent.getStringExtra("EXTRA_DESKRIPSI")
 
         if (judulDariMain != null) {
             binding.tvHeaderTitle.text = judulDariMain
         }
+        
+        // Opsional: Jika ada TextView untuk deskripsi di layout geometri
+        // binding.tvHeaderDesc.text = deskripsiDariMain
         initViews()
         setupListeners()
     }

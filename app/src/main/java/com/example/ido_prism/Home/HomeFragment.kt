@@ -37,15 +37,15 @@ class HomeFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.btnBangunRuang.setOnClickListener {
-            navigateTo(GeometricActivity::class.java)
+            navigateTo(GeometricActivity::class.java, "Kalkulator Geometri", "Hitung Luas Segitiga dan Volume Balok dengan mudah.")
         }
 
         binding.btnDashboardGuru.setOnClickListener {
-            navigateTo(DashboardGuruActivity::class.java)
+            navigateTo(DashboardGuruActivity::class.java, "Dashboard Tenaga Pengajar", "Manajemen data perkembangan anak dan kurikulum desa.")
         }
 
         binding.btnDashboardOrangTua.setOnClickListener {
-            navigateTo(DashboardOrangTuaActivity::class.java)
+            navigateTo(DashboardOrangTuaActivity::class.java, "Dashboard Orang Tua", "Pantau tumbuh kembang anak secara real-time.")
         }
 
         binding.btnLogout.setOnClickListener {
@@ -57,8 +57,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun navigateTo(targetActivity: Class<*>) {
+    private fun navigateTo(targetActivity: Class<*>, judul: String? = null, deskripsi: String? = null) {
         val intent = Intent(requireContext(), targetActivity)
+        judul?.let { intent.putExtra("EXTRA_JUDUL", it) }
+        deskripsi?.let { intent.putExtra("EXTRA_DESKRIPSI", it) }
         startActivity(intent)
     }
 
