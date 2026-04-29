@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".Home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/logo_bina_desa" />
+
+        <TextView
+            android:id="@+id/tvDashboardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bina Desa Balam Sempurna"
+            android:textAlignment="center"
+            android:textColor="@color/blue_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvDashboardDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="Pembangunan &amp; Monitoring Proyek Edukasi Desa."
+            android:textAlignment="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBangunRuang"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/red"
+            android:text="Kalkulator Edukasi Geometri"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCustom1"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/blue_primary"
+            android:text="Profil &amp; Pemantauan Anak"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCustom2"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/blue_primary"
+            android:text="Jadwal &amp; Layanan Terapi"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWebBinaDesa"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/blue_primary"
+            android:text="Web Bina Desa"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+</ScrollView>

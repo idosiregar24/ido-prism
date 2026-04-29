@@ -5,89 +5,70 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/blue_primary"
     tools:context=".TugasPertemuan6.SplashScreenActivity">
 
-
     <ImageView
-        android:id="@+id/di"
+        android:id="@+id/ivLogo"
         android:layout_width="150dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/logo_difablecare_white"
-        android:contentDescription="Logo"
+        android:layout_height="110dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/logo_bina_desa"
+        android:contentDescription="Logo Desa Balam Sempurna"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="380dp"
-        android:layout_height="455dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/ilustrasi_anak"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.46" />
 
     <TextView
         android:id="@+id/tvBrandName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="476dp"
-        android:letterSpacing="0.05"
-        android:text="DifabelCare"
+        android:layout_marginTop="24dp"
+        android:text="Balam Sempurna"
         android:textColor="@color/white"
-        android:textSize="36sp"
+        android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        android:letterSpacing="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/di"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tvSubtitle"
-        android:layout_width="342dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="4dp"
-        android:letterSpacing="0.1"
-        android:textAlignment="center"
-        android:text="Aplikasi untuk Orang tua dan Guru dengan Anak Berbutuh Khusus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Sistem Pembangunan &amp; Monitoring Proyek Desa"
         android:textColor="@color/colorAccent"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@+id/tvBrandName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBrandName" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:indeterminateTint="@color/colorAccent"
-        android:theme="@style/Widget.AppCompat.ProgressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginTop="48dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/red"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/tvVersion"
+        android:id="@+id/tvFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Versi 1.0.0"
-        android:textColor="@color/colorTextSecondary"
-        android:textSize="14sp"
+        android:layout_marginBottom="48dp"
+        android:text="Digitalisasi Untuk Kemajuan Desa"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:alpha="0.7"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
