@@ -46,6 +46,10 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(ProfileFragment())
                     true
                 }
+                R.id.nav_more -> {
+                    replaceFragment(MoreFragment())
+                    true
+                }
                 else -> false
             }
         }

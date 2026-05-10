@@ -36,15 +36,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.btnBangunRuang.setOnClickListener {
+        binding.cardKalkulator.setOnClickListener {
             navigateTo(GeometricActivity::class.java, "Kalkulator Geometri", "Hitung Luas Segitiga dan Volume Balok dengan mudah.")
         }
 
-        binding.btnDashboardGuru.setOnClickListener {
+        binding.cardGuru.setOnClickListener {
             navigateTo(DashboardGuruActivity::class.java, "Dashboard Tenaga Pengajar", "Manajemen data perkembangan anak dan kurikulum desa.")
         }
 
-        binding.btnDashboardOrangTua.setOnClickListener {
+        binding.cardOrangTua.setOnClickListener {
             navigateTo(DashboardOrangTuaActivity::class.java, "Dashboard Orang Tua", "Pantau tumbuh kembang anak secara real-time.")
         }
 
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
             showLogoutConfirmation()
         }
 
-        binding.btnWebBinaDesa.setOnClickListener {
+        binding.cardWebsite.setOnClickListener {
             navigateTo(WebViewBinaDesaActivity::class.java)
         }
     }

@@ -40,10 +40,11 @@ class LoginActivity : AppCompatActivity() {
                 editor.putBoolean("isLogin", true)
                 editor.apply()
 
-                val intent = Intent(this, MenuActivity::class.java)
+                // Navigasi ke BaseActivity (Bottom Navigation Host)
+                val intent = Intent(this, com.example.ido_prism.BaseActivity::class.java)
                 intent.putExtra("USERNAME", username)
-
                 startActivity(intent)
+                finish() // Mengakhiri LoginActivity agar tidak bisa di-back
             }
             else {
                 MaterialAlertDialogBuilder(this)
