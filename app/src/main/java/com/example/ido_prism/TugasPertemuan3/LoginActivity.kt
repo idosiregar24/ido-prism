@@ -38,11 +38,11 @@ class LoginActivity : AppCompatActivity() {
 
                 val editor = sharedPref.edit()
                 editor.putBoolean("isLogin", true)
+                editor.putString("username", username)
                 editor.apply()
 
                 // Navigasi ke BaseActivity (Bottom Navigation Host)
                 val intent = Intent(this, com.example.ido_prism.BaseActivity::class.java)
-                intent.putExtra("USERNAME", username)
                 startActivity(intent)
                 finish() // Mengakhiri LoginActivity agar tidak bisa di-back
             }

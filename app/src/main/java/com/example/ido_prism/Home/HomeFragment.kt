@@ -32,7 +32,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        displayUsername()
         setupClickListeners()
+    }
+
+    private fun displayUsername() {
+        val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+        val username = sharedPref.getString("username", "Warga Balam Sempurna")
+        binding.tvUsername.text = username
     }
 
     private fun setupClickListeners() {

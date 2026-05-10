@@ -47,6 +47,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tvUsername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Warga Balam Sempurna"
@@ -186,7 +187,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
                 <!-- Menu Dashboard Guru -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardGuru"
@@ -217,7 +217,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
                 <!-- Menu Dashboard Orang Tua -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardOrangTua"
@@ -248,7 +247,6 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
                 <!-- Menu Website Desa -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardWebsite"
