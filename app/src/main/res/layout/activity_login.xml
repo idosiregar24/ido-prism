@@ -55,8 +55,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:gravity="center"
                         android:fontFamily="@font/poppins_bold"
+                        android:gravity="center"
                         android:text="Desa Balam\nSempurna"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
@@ -74,8 +74,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:gravity="center"
                         android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
                         android:text="Masuk untuk memantau proyek desa"
                         android:textColor="#BDC3C7"
                         android:textSize="12sp" />
@@ -87,11 +87,11 @@
                         android:layout_height="48dp"
                         android:layout_marginTop="24dp"
                         android:background="@android:color/white"
-                        android:hint="Masukkan Email"
-                        android:paddingHorizontal="16dp"
-                        android:textSize="14sp"
                         android:fontFamily="@font/poppins_regular"
-                        android:inputType="textEmailAddress" />
+                        android:hint="Masukkan Email"
+                        android:inputType="textEmailAddress"
+                        android:paddingHorizontal="16dp"
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/etPassword"
@@ -99,11 +99,11 @@
                         android:layout_height="48dp"
                         android:layout_marginTop="16dp"
                         android:background="@android:color/white"
+                        android:fontFamily="@font/poppins_regular"
                         android:hint="Masukkan password"
                         android:inputType="textPassword"
                         android:paddingHorizontal="16dp"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/poppins_regular" />
+                        android:textSize="14sp" />
 
                     <!-- Login Button -->
                     <com.google.android.material.button.MaterialButton
@@ -112,9 +112,9 @@
                         android:layout_height="54dp"
                         android:layout_marginTop="32dp"
                         android:backgroundTint="@color/red"
+                        android:fontFamily="@font/poppins_bold"
                         android:text="Masuk"
                         android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_bold"
                         app:cornerRadius="12dp" />
 
                     <!-- Login Button -->
@@ -124,9 +124,9 @@
                         android:layout_height="54dp"
                         android:layout_marginTop="32dp"
                         android:backgroundTint="@color/red"
+                        android:fontFamily="@font/poppins_bold"
                         android:text="Masuk dengan Gmail"
                         android:textAllCaps="false"
-                        android:fontFamily="@font/poppins_bold"
                         app:cornerRadius="12dp" />
 
                     <!-- Footer Link (Minimalist) -->
