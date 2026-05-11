@@ -21,12 +21,16 @@ class BaseActivity : AppCompatActivity() {
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
+        /*
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Bottom padding diset ke 0 agar Bottom Navigation menempel ke bawah layar
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+            // Memberikan padding bawah agar tidak tertutup sistem navigasi
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        */
+        // Sengaja tidak diatur agar overlap dengan system bar
+        findViewById<android.view.View>(R.id.main).setPadding(0,0,0,0)
 
         // Digunakan ketika kita ingin menampilkan fragment pertama kali muncul pada saat membuka
         // Base Activity
