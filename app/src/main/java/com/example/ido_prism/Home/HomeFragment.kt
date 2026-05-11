@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // displayUsername() // Sengaja dimatikan untuk simulasi error Zona 3
+        displayUsername()
         setupClickListeners()
     }
 
