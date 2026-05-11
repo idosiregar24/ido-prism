@@ -117,6 +117,18 @@
                         android:fontFamily="@font/poppins_bold"
                         app:cornerRadius="12dp" />
 
+                    <!-- Login Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRegisterGmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="32dp"
+                        android:backgroundTint="@color/red"
+                        android:text="Masuk dengan Gmail"
+                        android:textAllCaps="false"
+                        android:fontFamily="@font/poppins_bold"
+                        app:cornerRadius="12dp" />
+
                     <!-- Footer Link (Minimalist) -->
                     <TextView
                         android:id="@+id/tvRegister"

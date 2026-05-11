@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ido_prism.InputEmailActivity
 import com.example.ido_prism.TugasPertemuan4.MenuActivity
 import com.example.ido_prism.databinding.ActivityLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -18,6 +19,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+        binding.btnRegisterGmail.setOnClickListener {
+            val intent = Intent(this, InputEmailActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btnLogin.setOnClickListener {
 
