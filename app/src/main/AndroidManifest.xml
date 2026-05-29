@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Idoprism">
         <activity
+            android:name=".InputEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".TugasPertemuan6.WebViewBinaDesaActivity"
             android:exported="false" />
         <activity

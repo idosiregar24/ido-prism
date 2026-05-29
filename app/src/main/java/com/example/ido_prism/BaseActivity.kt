@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.ido_prism.Home.HomeFragment
 import com.example.ido_prism.About.AboutFragment
 import com.example.ido_prism.Profile.ProfileFragment
+import com.example.ido_prism.Proyek.ProyekFragment
 import com.example.ido_prism.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {
@@ -40,6 +41,10 @@ class BaseActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.nav_home -> {
                     replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.nav_proyek -> {
+                    replaceFragment(ProyekFragment())
                     true
                 }
                 R.id.nav_about -> {

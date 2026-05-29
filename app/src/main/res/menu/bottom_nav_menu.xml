@@ -6,6 +6,11 @@
         android:title="Home" />
 
     <item
+        android:id="@+id/nav_proyek"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Proyek" />
+
+    <item
         android:id="@+id/nav_about"
         android:icon="@drawable/ic_info"
         android:title="About" />
