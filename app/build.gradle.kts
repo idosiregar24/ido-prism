@@ -42,6 +42,10 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.gridlayout)
+    implementation(libs.dotsindicator)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.glide)
     
     // Coil for image loading
     implementation("io.coil-kt:coil:2.7.0")

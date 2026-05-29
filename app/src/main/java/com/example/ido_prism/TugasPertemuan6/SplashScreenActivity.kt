@@ -14,6 +14,8 @@ import com.example.ido_prism.R
 import com.example.ido_prism.TugasPertemuan3.LoginActivity
 import com.example.ido_prism.TugasPertemuan4.MenuActivity
 
+import com.example.ido_prism.OnBoarding.OnBoardingActivity
+
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +31,16 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
             val isLogin = sharedPref.getBoolean("isLogin", false)
+            // Gunakan key 'show_onboarding_final' untuk mereset status
+            val showOnboarding = sharedPref.getBoolean("show_onboarding_final", true)
 
-            if (isLogin) {
-                val intent = Intent(this@SplashScreenActivity, BaseActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
-                startActivity(intent)
+            val intent = when {
+                isLogin -> Intent(this, BaseActivity::class.java)
+                showOnboarding -> Intent(this, OnBoardingActivity::class.java)
+                else -> Intent(this, LoginActivity::class.java)
             }
-
+            
+            startActivity(intent)
             finish()
         }, 2000)
     }

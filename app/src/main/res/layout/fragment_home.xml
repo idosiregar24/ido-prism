@@ -280,6 +280,44 @@
 
             </androidx.gridlayout.widget.GridLayout>
 
+            <!-- Section Berita Populer (Horizontal) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Berita Populer Hari Ini"
+                android:textColor="@color/blue_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPopular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_photo" />
+
+            <!-- Bagian List Berita Terkini (Vertical) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="Berita Desa Terkini"
+                android:textColor="@color/blue_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_photo" />
+
             <!-- MaterialButton Utama -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"

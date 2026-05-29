@@ -6,15 +6,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ido_prism.Home.photo.PhotoAdapter
+import com.example.ido_prism.Home.photo.PopularNewsAdapter
 import com.example.ido_prism.TugasPertemuan2.GeometricActivity
 import com.example.ido_prism.TugasPertemuan3.LoginActivity
 import com.example.ido_prism.TugasPertemuan4.DashboardGuruActivity
 import com.example.ido_prism.TugasPertemuan4.DashboardOrangTuaActivity
 import com.example.ido_prism.TugasPertemuan6.WebViewBinaDesaActivity
+import com.example.ido_prism.data.api.PhotoApiClient
+import com.example.ido_prism.data.model.NewsItem
 import com.example.ido_prism.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -34,6 +43,55 @@ class HomeFragment : Fragment() {
 
         displayUsername()
         setupClickListeners()
+        loadNews()
+    }
+
+    private fun loadNews() {
+        lifecycleScope.launch {
+            try {
+                // 1. Ambil data dari API (Picsum untuk gambar, JSONPlaceholder untuk teks)
+                val photos = PhotoApiClient.apiService.getPhotos(page = 1, limit = 30)
+                val posts = PhotoApiClient.newsService.getNews(limit = 30)
+                val users = PhotoApiClient.newsService.getUsers()
+
+                // 2. Gabungkan data menjadi List NewsItem dengan proteksi users.size
+                val newsItems = posts.mapIndexed { index, post ->
+                    val photo = photos.getOrNull(index)
+                    val user = if (users.isNotEmpty()) users[index % users.size] else null
+
+                    NewsItem(
+                        id = post.id,
+                        title = post.title.split(" ").take(4).joinToString(" ").replaceFirstChar { it.uppercase() },
+                        body = post.body.take(100) + "...",
+                        imageUrl = photo?.download_url ?: "https://picsum.photos/id/${index + 20}/800/600",
+                        date = "${(index % 28) + 1} Mei 2024",
+                        category = when(index % 3) {
+                            0 -> "Pembangunan"
+                            1 -> "Sosial"
+                            else -> "Ekonomi"
+                        },
+                        author = user?.name ?: "Admin Desa"
+                    )
+                }
+
+                // 3. Tampilkan di RecyclerView Populer (Horizontal)
+                val popularItems = newsItems.shuffled().take(10)
+                binding.rvPopular.apply {
+                    layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                    adapter = PopularNewsAdapter(popularItems)
+                }
+
+                // 4. Tampilkan di RecyclerView Terkini (Vertical)
+                binding.rvGallery.apply {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    adapter = PhotoAdapter(newsItems)
+                    isNestedScrollingEnabled = false
+                }
+
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat berita: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun displayUsername() {
@@ -55,12 +113,12 @@ class HomeFragment : Fragment() {
             navigateTo(DashboardOrangTuaActivity::class.java, "Dashboard Orang Tua", "Pantau tumbuh kembang anak secara real-time.")
         }
 
-        binding.btnLogout.setOnClickListener {
-            showLogoutConfirmation()
-        }
-
         binding.cardWebsite.setOnClickListener {
             navigateTo(WebViewBinaDesaActivity::class.java)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            showLogoutConfirmation()
         }
     }
 
@@ -77,9 +135,9 @@ class HomeFragment : Fragment() {
             .setMessage("Apakah Anda yakin ingin keluar akun?")
             .setPositiveButton("Ya") { _, _ ->
                 val sharedPreferences = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putBoolean("isLogin", false)
-                editor.apply()
+                sharedPreferences.edit {
+                    putBoolean("isLogin", false)
+                }
 
                 Snackbar.make(binding.root, "Permintaan Anda Disetujui", Snackbar.LENGTH_SHORT).show()
 
@@ -92,7 +150,6 @@ class HomeFragment : Fragment() {
             }
             .setNegativeButton("Tidak") { dialog, _ ->
                 dialog.dismiss()
-                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
             }
             .show()
     }
