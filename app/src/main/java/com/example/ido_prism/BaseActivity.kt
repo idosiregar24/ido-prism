@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.ido_prism.Home.HomeFragment
 import com.example.ido_prism.About.AboutFragment
+import com.example.ido_prism.Note.FragmentNote
 import com.example.ido_prism.Profile.ProfileFragment
 import com.example.ido_prism.Proyek.ProyekFragment
 import com.example.ido_prism.databinding.ActivityBaseBinding
@@ -57,6 +58,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.nav_more -> {
                     replaceFragment(MoreFragment())
+                    true
+                }
+                R.id.note -> {
+                    replaceFragment(FragmentNote())
                     true
                 }
                 else -> false
