@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ido_prism.data.entity.NoteEntity
 import com.example.ido_prism.databinding.ItemNoteBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 class NoteAdapter(
-    private val notes: List<NoteEntity>
+    private val notes: List<NoteEntity>,
+    private val noteFragment: FragmentNote
 ) :
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
@@ -27,6 +29,23 @@ class NoteAdapter(
 
         holder.itemView.setOnClickListener {
             Snackbar.make(holder.itemView, "Clicked: ${note.title}", Snackbar.LENGTH_SHORT).show()
+        }
+
+        holder.binding.btnDelete.setOnClickListener {
+            MaterialAlertDialogBuilder(holder.itemView.context)
+                .setTitle("Hapus Catatan")
+                .setMessage("Apakah kamu yakin ingin menghapus catatan ini?")
+                .setPositiveButton("Ya") { dialog, _ ->
+
+                    noteFragment.deleteNote(note)
+
+                    dialog.dismiss()
+
+                }
+                .setNegativeButton("Batal") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
     }
 
