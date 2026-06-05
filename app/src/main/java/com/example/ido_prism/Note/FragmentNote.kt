@@ -47,7 +47,7 @@ class FragmentNote : Fragment() {private var _binding: FragmentNoteBinding? = nu
 
         /** Inisialisasi AppDatabase & Adapter **/
         db = AppDatabase.getInstance(requireContext())
-        adapter = NoteAdapter(notes)
+        adapter = NoteAdapter(notes, this)
 
         binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())
         binding.rvNotes.adapter = adapter
@@ -61,6 +61,13 @@ class FragmentNote : Fragment() {private var _binding: FragmentNoteBinding? = nu
         binding.fabAddNote.setOnClickListener {
             val intent = Intent(requireContext(), NoteFormActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    fun deleteNote(note: NoteEntity) {
+        lifecycleScope.launch {
+            db.noteDao().delete(note)
+            fetchNotes()
         }
     }
 
