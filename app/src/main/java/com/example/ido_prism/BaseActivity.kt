@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.ido_prism.Home.HomeFragment
 import com.example.ido_prism.About.AboutFragment
 import com.example.ido_prism.Note.FragmentNote
+import com.example.ido_prism.Aspirasi.FragmentAspirasi
 import com.example.ido_prism.Profile.ProfileFragment
 import com.example.ido_prism.Proyek.ProyekFragment
 import com.example.ido_prism.databinding.ActivityBaseBinding
@@ -48,8 +49,8 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(ProyekFragment())
                     true
                 }
-                R.id.nav_about -> {
-                    replaceFragment(AboutFragment())
+                R.id.nav_note -> {
+                    replaceFragment(com.example.ido_prism.Note.FragmentNote())
                     true
                 }
                 R.id.nav_profile -> {
@@ -60,16 +61,12 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(MoreFragment())
                     true
                 }
-                R.id.note -> {
-                    replaceFragment(FragmentNote())
-                    true
-                }
                 else -> false
             }
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
             // .addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi

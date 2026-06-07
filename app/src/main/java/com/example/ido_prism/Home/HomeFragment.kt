@@ -117,6 +117,10 @@ class HomeFragment : Fragment() {
             navigateTo(WebViewBinaDesaActivity::class.java)
         }
 
+        binding.cardAspirasi.setOnClickListener {
+            (activity as? com.example.ido_prism.BaseActivity)?.replaceFragment(com.example.ido_prism.Aspirasi.FragmentAspirasi())
+        }
+
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmation()
         }

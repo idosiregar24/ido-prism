@@ -26,9 +26,10 @@ class MoreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val menuItems = arrayOf(
+            "Aspirasi",
+            "About Bina Desa",
             "Privacy Policy",
             "Terms of Service",
-            "About Bina Desa",
             "Pusat Bantuan",
             "Versi Aplikasi v1.0.4"
         )
@@ -43,7 +44,17 @@ class MoreFragment : Fragment() {
 
         binding.lvMoreMenu.setOnItemClickListener { _, _, position, _ ->
             val selected = menuItems[position]
-            Toast.makeText(requireContext(), "Membuka: $selected", Toast.LENGTH_SHORT).show()
+            when (selected) {
+                "Aspirasi" -> {
+                    (activity as? BaseActivity)?.replaceFragment(com.example.ido_prism.Aspirasi.FragmentAspirasi())
+                }
+                "About Bina Desa" -> {
+                    (activity as? BaseActivity)?.replaceFragment(com.example.ido_prism.About.AboutFragment())
+                }
+                else -> {
+                    Toast.makeText(requireContext(), "Membuka: $selected", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
