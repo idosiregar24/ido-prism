@@ -28,7 +28,24 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        handleNotificationIntent()
+    }
 
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleNotificationIntent()
+    }
 
+    private fun handleNotificationIntent() {
+        val proyekId = intent.getStringExtra("PROYEK_ID")
+        if (proyekId != null) {
+            Log.d("MainActivity", "Diterima PROYEK_ID: $proyekId")
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Notifikasi Proyek")
+                .setMessage("Membuka detail untuk proyek: $proyekId")
+                .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
     }
 }

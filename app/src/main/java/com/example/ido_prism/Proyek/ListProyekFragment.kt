@@ -1,20 +1,55 @@
 package com.example.ido_prism.Proyek
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ido_prism.R
 import com.example.ido_prism.databinding.FragmentListProyekBinding
+import com.example.ido_prism.notification.NotificationHelper
+import com.example.ido_prism.notification.ReminderManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 
 class ListProyekFragment : Fragment() {
     private var _binding: FragmentListProyekBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var notificationHelper: NotificationHelper
+    private lateinit var reminderManager: ReminderManager
+
+    // Launcher untuk meminta izin notifikasi (Android 13+)
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            Toast.makeText(requireContext(), "Izin notifikasi diberikan", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), "Izin ditolak. Notifikasi tidak akan muncul.", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
 
     private val proyekList = listOf(
         DataProyek(
@@ -197,12 +232,24 @@ class ListProyekFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        notificationHelper = NotificationHelper(requireContext())
+        reminderManager = ReminderManager(requireContext())
+        
+        // Meminta izin notifikasi saat fragment dibuka
+        checkNotificationPermission()
+        
         setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
         binding.rvProyek.layoutManager = GridLayoutManager(context, 2)
         binding.rvProyek.adapter = ProyekAdapter(proyekList) { proyek ->
+            // Contoh trigger notification langsung saat item diklik (Skenario: Proyek Terpilih)
+            notificationHelper.showNotification(
+                "Proyek Diakses",
+                "Anda sedang melihat detail ${proyek.nama}",
+                proyek.kode
+            )
             showDetailProyek(proyek)
         }
     }
@@ -213,6 +260,8 @@ class ListProyekFragment : Fragment() {
         
         val tvTitle = view.findViewById<TextView>(R.id.tvTitleDetail)
         val tvFullDetail = view.findViewById<TextView>(R.id.tvFullDetail)
+        val etMinutes = view.findViewById<TextInputEditText>(R.id.etReminderMinutes)
+        val btnSetReminder = view.findViewById<MaterialButton>(R.id.btnSetReminder)
         val btnClose = view.findViewById<MaterialButton>(R.id.btnCloseDetail)
         
         tvTitle.text = proyek.nama
@@ -231,11 +280,23 @@ class ListProyekFragment : Fragment() {
         """.trimIndent()
         
         tvFullDetail.text = detailText
+
+        btnSetReminder.setOnClickListener {
+            val minutesStr = etMinutes.text.toString()
+            if (minutesStr.isNotEmpty()) {
+                val minutes = minutesStr.toInt()
+                reminderManager.setReminder(minutes, proyek.kode, proyek.nama)
+                Toast.makeText(requireContext(), "Reminder diatur $minutes menit dari sekarang", Toast.LENGTH_SHORT).show()
+                bottomSheetDialog.dismiss()
+            } else {
+                etMinutes.error = "Masukkan menit"
+            }
+        }
         
         btnClose.setOnClickListener {
             bottomSheetDialog.dismiss()
         }
-        
+
         bottomSheetDialog.setContentView(view)
         bottomSheetDialog.show()
     }
