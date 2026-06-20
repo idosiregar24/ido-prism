@@ -41,14 +41,18 @@ class NotificationHelper(private val context: Context) {
     fun showNotification(title: String, message: String, proyekId: String? = null) {
         Log.d(TAG, "Showing notification: $title - $message")
         
-        val intent = Intent(context, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        // Mengarahkan ke BaseActivity (bukan MainActivity) karena BaseActivity yang punya BottomNav
+        val intent = Intent(context, com.example.ido_prism.BaseActivity::class.java).apply {
+            // SINGLE_TOP agar tidak membuka aplikasi dari awal (splash screen) jika sudah terbuka
+            flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
             putExtra("PROYEK_ID", proyekId)
+            putExtra("FROM_NOTIFICATION", true)
         }
 
+        val requestCode = proyekId?.hashCode() ?: System.currentTimeMillis().toInt()
         val pendingIntent = PendingIntent.getActivity(
             context,
-            System.currentTimeMillis().toInt(),
+            requestCode,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
@@ -57,7 +61,8 @@ class NotificationHelper(private val context: Context) {
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentTitle(title)
             .setContentText(message)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_MAX) // Biar muncul sebagai popup DAN menetap di tray
+            .setCategory(NotificationCompat.CATEGORY_REMINDER)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
@@ -65,13 +70,8 @@ class NotificationHelper(private val context: Context) {
 
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         
-        // Cek izin secara eksplisit sebelum notify (untuk logging)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val permission = context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
-            Log.d(TAG, "POST_NOTIFICATIONS permission status: $permission")
-        }
-
-        notificationManager.notify(System.currentTimeMillis().toInt(), builder.build())
-        Log.d(TAG, "Notification sent to NotificationManager")
+        // Gunakan ID yang konsisten berdasarkan proyekId agar tidak duplikat di tray
+        val notificationId = proyekId?.hashCode() ?: System.currentTimeMillis().toInt()
+        notificationManager.notify(notificationId, builder.build())
     }
 }
