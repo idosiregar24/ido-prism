@@ -2,150 +2,297 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A1C1E"
+    android:background="@color/md_theme_primary"
     tools:context=".RegisterActivity">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/ivBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_proyek"
+        android:alpha="0.4" />
+
+    <!-- Atmospheric Glow -->
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-100dp"
+        android:background="@drawable/bg_glow_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="32dp">
+            android:padding="20dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#2C2F33"
-                app:cardCornerRadius="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:cardBackgroundColor="#F2F8F9FA"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#1A000000"
+                app:layout_constraintBottom_toTopOf="@id/tvLegalese"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
                     android:padding="32dp">
 
+                    <!-- Brand Header -->
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/logo_bina_desa"
+                        android:scaleType="fitCenter" />
+
+                    <!-- Header -->
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Buat Akun Baru"
-                        android:textColor="@color/white"
-                        android:textSize="22sp" />
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="24sp"
+                        android:gravity="center_horizontal" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Lengkapi data diri Anda"
-                        android:textColor="#BDC3C7"
-                        android:textSize="12sp" />
+                        android:text="Lengkapi data diri Anda untuk bergabung"
+                        android:textColor="@color/md_theme_on_surface_variant"
+                        android:textSize="14sp"
+                        android:gravity="center_horizontal" />
 
-                    <!-- Name -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <!-- Form Section -->
+
+                    <!-- Nama Lengkap -->
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:hint="Nama Lengkap"
-                        android:textColorHint="#BDC3C7"
-                        app:boxStrokeColor="@color/white"
-                        app:hintTextColor="@color/white">
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Nama Lengkap"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_menu_edit"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etFullName"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
+                            android:layout_height="56dp"
+                            android:hint="Nama lengkap Anda"
                             android:inputType="textPersonName"
-                            android:textColor="@color/white" />
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Username -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="Username"
-                        android:textColorHint="#BDC3C7"
-                        app:boxStrokeColor="@color/white"
-                        app:hintTextColor="@color/white">
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Username"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_menu_myplaces"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etUsername"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
+                            android:layout_height="56dp"
+                            android:hint="username123"
                             android:inputType="text"
-                            android:textColor="@color/white" />
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Email (Pre-filled from Gmail) -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <!-- Email -->
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="Email"
-                        android:textColorHint="#BDC3C7"
-                        app:boxStrokeColor="@color/white"
-                        app:hintTextColor="@color/white">
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Alamat Email"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_dialog_email"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEmail"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:enabled="false"
-                            android:fontFamily="@font/poppins_regular"
+                            android:layout_height="56dp"
+                            android:hint="nama@email.com"
                             android:inputType="textEmailAddress"
-                            android:textColor="@color/white" />
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Password -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="Password"
-                        android:textColorHint="#BDC3C7"
-                        app:boxStrokeColor="@color/white"
-                        app:hintTextColor="@color/white"
-                        app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/white">
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Kata Sandi"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etPassword"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
+                            android:layout_height="56dp"
+                            android:hint="••••••••"
                             android:inputType="textPassword"
-                            android:textColor="@color/white" />
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnRegister"
                         android:layout_width="match_parent"
-                        android:layout_height="54dp"
+                        android:layout_height="56dp"
                         android:layout_marginTop="32dp"
-                        android:backgroundTint="@color/red"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Daftar"
+                        android:backgroundTint="@color/md_theme_secondary"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Daftar Sekarang"
                         android:textAllCaps="false"
-                        app:cornerRadius="12dp" />
+                        android:textSize="16sp"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"/>
+
+                    <!-- Footer Link -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Sudah punya akun? "
+                            android:textColor="@color/md_theme_on_surface_variant"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvLogin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Masuk"
+                            android:textColor="@color/md_theme_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvLegalese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Sistem ini digunakan khusus untuk perangkat desa dan verifikator publik.\n© 2024 CivicPulse – Desa Balam Sempurna."
+                android:textColor="#80FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardRegister" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

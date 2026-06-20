@@ -35,4 +35,11 @@
     <color name="profile_on_surface_variant">#44474E</color>
     <color name="profile_outline_variant">#C4C6CE</color>
     <color name="profile_primary_container">#1A2E4C</color>
+
+    <color name="md_theme_primary">#021936</color>
+    <color name="md_theme_secondary">#B7102A</color>
+    <color name="md_theme_on_surface_variant">#44474E</color>
+    <color name="md_theme_outline_variant">#C4C6CE</color>
+    <color name="md_theme_surface_container_low">#F3F4F5</color>
+    <color name="md_theme_on_primary">#FFFFFF</color>
 </resources>

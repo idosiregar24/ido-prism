@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_theme_primary"
     tools:context=".TugasPertemuan3.LoginActivity">
 
     <!-- Background Image -->
@@ -12,31 +13,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_proyek" />
+        android:src="@drawable/bg_proyek"
+        android:alpha="0.4" />
 
-    <!-- Dark Overlay -->
+    <!-- Atmospheric Glow (Optional simulation using gradients if available, or just a view) -->
     <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#AA000000" />
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-100dp"
+        android:background="@drawable/bg_glow_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="32dp">
+            android:padding="20dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#1A1C1E"
-                app:cardCornerRadius="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:cardBackgroundColor="#F2F8F9FA"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="20dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#1A000000"
+                app:layout_constraintBottom_toTopOf="@id/tvLegalese"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -45,103 +57,224 @@
                     android:orientation="vertical"
                     android:padding="32dp">
 
-                    <!-- Logo & Branding -->
+                    <!-- Brand Header -->
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/logo_bina_desa" />
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/logo_bina_desa"
+                        android:scaleType="fitCenter" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:gravity="center"
-                        android:text="Desa Balam\nSempurna"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:text="Login Akun"
-                        android:textColor="@color/white"
-                        android:textSize="22sp" />
+                        android:text="Desa Balam Sempurna"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:gravity="center"
-                        android:text="Masuk untuk memantau proyek desa"
-                        android:textColor="#BDC3C7"
+                        android:text="Monitoring Proyek Pembangunan Desa"
+                        android:textColor="@color/md_theme_on_surface_variant"
+                        android:textSize="14sp"
+                        android:gravity="center"/>
+
+                    <!-- Form Section -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Alamat Email"
+                        android:textColor="@color/md_theme_primary"
                         android:textSize="12sp" />
 
-                    <!-- Inputs -->
-                    <EditText
-                        android:id="@+id/etUsername"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="24dp"
-                        android:background="@android:color/white"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="Masukkan Email"
-                        android:inputType="textEmailAddress"
-                        android:paddingHorizontal="16dp"
-                        android:textSize="14sp" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_dialog_email"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
 
-                    <EditText
-                        android:id="@+id/etPassword"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etUsername"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:hint="nama@email.com"
+                            android:inputType="textEmailAddress"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:background="@android:color/white"
-                        android:fontFamily="@font/poppins_regular"
-                        android:hint="Masukkan password"
-                        android:inputType="textPassword"
-                        android:paddingHorizontal="16dp"
-                        android:textSize="14sp" />
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Kata Sandi"
+                            android:textColor="@color/md_theme_primary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvForgotPassword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Lupa sandi?"
+                            android:textColor="@color/md_theme_secondary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
-                    <!-- Login Button -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:hintEnabled="false"
+                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
+                        app:startIconTint="@color/md_theme_on_surface_variant"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/md_theme_on_surface_variant"
+                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundColor="@color/md_theme_surface_container_low"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="1dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:hint="••••••••"
+                            android:inputType="textPassword"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="14sp"
+                            android:padding="0dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogin"
                         android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="32dp"
-                        android:backgroundTint="@color/red"
-                        android:fontFamily="@font/poppins_bold"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="24dp"
+                        android:backgroundTint="@color/md_theme_secondary"
+                        android:fontFamily="@font/poppins_semibold"
                         android:text="Masuk"
                         android:textAllCaps="false"
-                        app:cornerRadius="12dp" />
+                        android:textSize="16sp"
+                        app:cornerRadius="12dp"
+                        app:icon="@android:drawable/ic_menu_send"
+                        app:iconGravity="textEnd"
+                        app:elevation="4dp"/>
 
-                    <!-- Login Button -->
+                    <!-- Divider -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/md_theme_outline_variant"
+                            android:alpha="0.3"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Atau"
+                            android:textColor="@color/md_theme_on_surface_variant"
+                            android:textSize="12sp" />
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/md_theme_outline_variant"
+                            android:alpha="0.3"/>
+                    </LinearLayout>
+
+                    <!-- OAuth Section -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnRegisterGmail"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="32dp"
-                        android:backgroundTint="@color/red"
-                        android:fontFamily="@font/poppins_bold"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Masuk dengan Gmail"
                         android:textAllCaps="false"
-                        app:cornerRadius="12dp" />
+                        android:textColor="@color/md_theme_primary"
+                        app:strokeColor="@color/md_theme_outline_variant"
+                        app:strokeWidth="1dp"
+                        app:cornerRadius="12dp"
+                        app:icon="@android:drawable/ic_menu_send"
+                        app:iconTint="@android:color/holo_red_dark"
+                        app:iconPadding="8dp"/>
 
-                    <!-- Footer Link (Minimalist) -->
-                    <TextView
-                        android:id="@+id/tvRegister"
+                    <!-- Footer Link -->
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Belum punya akun? Daftar Sekarang"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Belum punya akun? "
+                            android:textColor="@color/md_theme_on_surface_variant"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/tvRegister"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Daftar Sekarang"
+                            android:textColor="@color/md_theme_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvLegalese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Sistem ini digunakan khusus untuk perangkat desa dan verifikator publik.\n© 2024 CivicPulse – Desa Balam Sempurna."
+                android:textColor="#80FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardLogin" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
