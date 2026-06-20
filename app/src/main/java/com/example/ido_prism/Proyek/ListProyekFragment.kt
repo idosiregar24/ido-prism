@@ -27,6 +27,117 @@ class ListProyekFragment : Fragment() {
 
     private lateinit var notificationHelper: NotificationHelper
     private lateinit var reminderManager: ReminderManager
+    private lateinit var proyekAdapter: ProyekAdapter
+
+    private val fullProyekList = listOf(
+        DataProyek(
+            kode = "PRJ0001",
+            nama = "Pembangunan Air Bersih Bontang",
+            tahun = 2023,
+            lokasi = "Bontang, Kalimantan Timur",
+            anggaran = "Rp 1.250.000.000",
+            sumberDana = "APBD",
+            latitude = 0.137558,
+            longitude = 117.501166,
+            deskripsi = "Kegiatan dilakukan secara bertahap dengan mempertimbangkan kondisi geografis dan kebutuhan lapangan.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg",
+            progress = 75,
+            status = "Berjalan",
+            kategori = "Sanitasi"
+        ),
+        DataProyek(
+            kode = "PRJ0002",
+            nama = "Pengadaan Peralatan Cimahi",
+            tahun = 2023,
+            lokasi = "Kelurahan Padangpanjang, Kecamatan Ville",
+            anggaran = "Rp 914.192.986",
+            sumberDana = "Hibah",
+            latitude = 0.137558,
+            longitude = 140.541166,
+            deskripsi = "Kegiatan dilakukan secara bertahap dengan mempertimbangkan kondisi geografis dan kebutuhan lapangan.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg",
+            progress = 100,
+            status = "Selesai",
+            kategori = "Peralatan"
+        ),
+        DataProyek(
+            kode = "PRJ0003",
+            nama = "Pembangunan Drainase Yogyakarta",
+            tahun = 2024,
+            lokasi = "Kota Yogyakarta",
+            anggaran = "Rp 750.000.000",
+            sumberDana = "APBN",
+            latitude = -7.79558,
+            longitude = 110.36949,
+            deskripsi = "Pembangunan sistem drainase untuk mengurangi risiko banjir di area perkotaan.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/2DhHCbK7AB8ggb70blPg9yeIH8QJ45ZswUl1k0Q1.png",
+            progress = 40,
+            status = "Berjalan",
+            kategori = "Infrastruktur"
+        ),
+        DataProyek(
+            kode = "PRJ0004",
+            nama = "Pembangunan Jalan Batu",
+            tahun = 2024,
+            lokasi = "Batu, Jawa Timur",
+            anggaran = "Rp 2.100.000.000",
+            sumberDana = "APBD",
+            latitude = -7.8704,
+            longitude = 112.5264,
+            deskripsi = "Peningkatan kualitas jalan akses menuju area wisata di Kota Batu.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/maNWjcbMCRqdAzGvvzB6lmzaluLGuY7MYtvZpv5R.jpg",
+            progress = 15,
+            status = "Tertunda",
+            kategori = "Infrastruktur"
+        ),
+        DataProyek(
+            kode = "PRJ0005",
+            nama = "Renovasi Jembatan Desa",
+            tahun = 2023,
+            lokasi = "Desa Makmur",
+            anggaran = "Rp 500.000.000",
+            sumberDana = "Dana Desa",
+            latitude = -6.1234,
+            longitude = 106.1234,
+            deskripsi = "Perbaikan struktur jembatan penyeberangan antar dusun.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg",
+            progress = 90,
+            status = "Berjalan",
+            kategori = "Infrastruktur"
+        ),
+        DataProyek(
+            kode = "PRJ0006",
+            nama = "Pembangunan Balai Desa",
+            tahun = 2024,
+            lokasi = "Kecamatan Sukamaju",
+            anggaran = "Rp 850.000.000",
+            sumberDana = "APBD",
+            latitude = -6.2345,
+            longitude = 106.2345,
+            deskripsi = "Pembangunan gedung pusat administrasi dan kegiatan kemasyarakatan.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg",
+            progress = 60,
+            status = "Berjalan",
+            kategori = "Infrastruktur"
+        ),
+        DataProyek(
+            kode = "PRJ0007",
+            nama = "Pengadaan Bibit Unggul",
+            tahun = 2023,
+            lokasi = "Kelompok Tani Harapan",
+            anggaran = "Rp 150.000.000",
+            sumberDana = "Kementerian Pertanian",
+            latitude = -6.3456,
+            longitude = 106.3456,
+            deskripsi = "Penyediaan bibit padi varietas unggul untuk meningkatkan hasil panen.",
+            gambar = "https://proyekdesa.alwaysdata.net/storage/media/2DhHCbK7AB8ggb70blPg9yeIH8QJ45ZswUl1k0Q1.png",
+            progress = 100,
+            status = "Selesai",
+            kategori = "Peralatan"
+        )
+    )
+
+    private var filteredProyekList = fullProyekList.toList()
 
     // Launcher untuk meminta izin notifikasi (Android 13+)
     private val requestPermissionLauncher = registerForActivityResult(
@@ -51,177 +162,6 @@ class ListProyekFragment : Fragment() {
         }
     }
 
-    private val proyekList = listOf(
-        DataProyek(
-            kode = "PRJ0001",
-            nama = "Pembangunan Air Bersih Bontang",
-            tahun = 2023,
-            lokasi = "Bontang, Kalimantan Timur",
-            anggaran = "Rp 1.250.000.000",
-            sumberDana = "APBD",
-            latitude = 0.137558,
-            longitude = 117.501166,
-            deskripsi = "Kegiatan dilakukan secara bertahap dengan mempertimbangkan kondisi geografis dan kebutuhan lapangan.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0002",
-            nama = "Pengadaan Peralatan Cimahi",
-            tahun = 2023,
-            lokasi = "Kelurahan Padangpanjang, Kecamatan Ville",
-            anggaran = "Rp 914.192.986",
-            sumberDana = "Hibah",
-            latitude = 0.137558,
-            longitude = 140.541166,
-            deskripsi = "Kegiatan dilakukan secara bertahap dengan mempertimbangkan kondisi geografis dan kebutuhan lapangan.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0003",
-            nama = "Pembangunan Drainase Yogyakarta",
-            tahun = 2024,
-            lokasi = "Kota Yogyakarta",
-            anggaran = "Rp 750.000.000",
-            sumberDana = "APBN",
-            latitude = -7.79558,
-            longitude = 110.36949,
-            deskripsi = "Pembangunan sistem drainase untuk mengurangi risiko banjir di area perkotaan.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/2DhHCbK7AB8ggb70blPg9yeIH8QJ45ZswUl1k0Q1.png"
-        ),
-        DataProyek(
-            kode = "PRJ0004",
-            nama = "Pembangunan Jalan Batu",
-            tahun = 2024,
-            lokasi = "Batu, Jawa Timur",
-            anggaran = "Rp 2.100.000.000",
-            sumberDana = "APBD",
-            latitude = -7.8704,
-            longitude = 112.5264,
-            deskripsi = "Peningkatan kualitas jalan akses menuju area wisata di Kota Batu.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/maNWjcbMCRqdAzGvvzB6lmzaluLGuY7MYtvZpv5R.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0005",
-            nama = "Renovasi Jembatan Desa",
-            tahun = 2023,
-            lokasi = "Desa Makmur",
-            anggaran = "Rp 500.000.000",
-            sumberDana = "Dana Desa",
-            latitude = -6.1234,
-            longitude = 106.1234,
-            deskripsi = "Perbaikan struktur jembatan penyeberangan antar dusun.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0006",
-            nama = "Pembangunan Balai Desa",
-            tahun = 2024,
-            lokasi = "Kecamatan Sukamaju",
-            anggaran = "Rp 850.000.000",
-            sumberDana = "APBD",
-            latitude = -6.2345,
-            longitude = 106.2345,
-            deskripsi = "Pembangunan gedung pusat administrasi dan kegiatan kemasyarakatan.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0007",
-            nama = "Pengadaan Bibit Unggul",
-            tahun = 2023,
-            lokasi = "Kelompok Tani Harapan",
-            anggaran = "Rp 150.000.000",
-            sumberDana = "Kementerian Pertanian",
-            latitude = -6.3456,
-            longitude = 106.3456,
-            deskripsi = "Penyediaan bibit padi varietas unggul untuk meningkatkan hasil panen.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/2DhHCbK7AB8ggb70blPg9yeIH8QJ45ZswUl1k0Q1.png"
-        ),
-        DataProyek(
-            kode = "PRJ0008",
-            nama = "Pemasangan Lampu Jalan",
-            tahun = 2024,
-            lokasi = "Jalan Protokol Desa",
-            anggaran = "Rp 200.000.000",
-            sumberDana = "APBD",
-            latitude = -6.4567,
-            longitude = 106.4567,
-            deskripsi = "Penerangan jalan umum untuk keamanan dan kenyamanan warga di malam hari.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/maNWjcbMCRqdAzGvvzB6lmzaluLGuY7MYtvZpv5R.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0009",
-            nama = "Pembangunan Irigasi Sawah",
-            tahun = 2023,
-            lokasi = "Area Persawahan Selatan",
-            anggaran = "Rp 400.000.000",
-            sumberDana = "Dana Desa",
-            latitude = -6.5678,
-            longitude = 106.5678,
-            deskripsi = "Pembangunan saluran air untuk menjamin pasokan air ke sawah warga.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0010",
-            nama = "Renovasi Sekolah Dasar",
-            tahun = 2024,
-            lokasi = "SDN 01 Sukadamai",
-            anggaran = "Rp 600.000.000",
-            sumberDana = "APBN",
-            latitude = -6.6789,
-            longitude = 106.6789,
-            deskripsi = "Perbaikan ruang kelas dan fasilitas sanitasi sekolah.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0011",
-            nama = "Pembangunan Poskamling",
-            tahun = 2023,
-            lokasi = "RW 05 Desa Sejahtera",
-            anggaran = "Rp 30.000.000",
-            sumberDana = "Swadaya Masyarakat",
-            latitude = -6.7890,
-            longitude = 106.7890,
-            deskripsi = "Pembangunan pos keamanan lingkungan untuk ronda malam.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/2DhHCbK7AB8ggb70blPg9yeIH8QJ45ZswUl1k0Q1.png"
-        ),
-        DataProyek(
-            kode = "PRJ0012",
-            nama = "Pengadaan Alat Kesehatan",
-            tahun = 2024,
-            lokasi = "Puskesmas Pembantu",
-            anggaran = "Rp 350.000.000",
-            sumberDana = "Dinkes",
-            latitude = -6.8901,
-            longitude = 106.8901,
-            deskripsi = "Penyediaan peralatan medis dasar untuk pelayanan kesehatan masyarakat.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/maNWjcbMCRqdAzGvvzB6lmzaluLGuY7MYtvZpv5R.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0013",
-            nama = "Pembangunan Lapangan Olahraga",
-            tahun = 2023,
-            lokasi = "Kompleks Olahraga Desa",
-            anggaran = "Rp 700.000.000",
-            sumberDana = "Dana Desa",
-            latitude = -6.9012,
-            longitude = 106.9012,
-            deskripsi = "Pembangunan lapangan serbaguna untuk olahraga voli dan futsal.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/93n9hEbfdeB9Lz3DPoRz1a4gp4tznF9HEj7TJh21.jpg"
-        ),
-        DataProyek(
-            kode = "PRJ0014",
-            nama = "Penghijauan Hutan Desa",
-            tahun = 2024,
-            lokasi = "Lereng Gunung Salak",
-            anggaran = "Rp 100.000.000",
-            sumberDana = "KLHK",
-            latitude = -7.0123,
-            longitude = 107.0123,
-            deskripsi = "Penanaman 10.000 pohon untuk konservasi lahan dan pencegahan longsor.",
-            gambar = "https://proyekdesa.alwaysdata.net/storage/media/5iRy5R62CZrEKQdzpfY8TpS00u8dlCZdRRqpdF79.jpg"
-        )
-    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -239,11 +179,30 @@ class ListProyekFragment : Fragment() {
         checkNotificationPermission()
         
         setupRecyclerView()
+        setupChipFilter()
+        
+        binding.fabAddNote.setOnClickListener {
+            Toast.makeText(requireContext(), "Fitur Tambah Proyek/Catatan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setupChipFilter() {
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { _, checkedIds ->
+            val selectedChipId = checkedIds.firstOrNull()
+            
+            filteredProyekList = when (selectedChipId) {
+                R.id.chipInfrastruktur -> fullProyekList.filter { it.kategori == "Infrastruktur" }
+                R.id.chipSanitasi -> fullProyekList.filter { it.kategori == "Sanitasi" }
+                R.id.chipPeralatan -> fullProyekList.filter { it.kategori == "Peralatan" }
+                else -> fullProyekList
+            }
+            proyekAdapter.updateData(filteredProyekList)
+        }
     }
 
     private fun setupRecyclerView() {
         binding.rvProyek.layoutManager = GridLayoutManager(context, 2)
-        binding.rvProyek.adapter = ProyekAdapter(proyekList) { proyek ->
+        proyekAdapter = ProyekAdapter(filteredProyekList) { proyek ->
             // Contoh trigger notification langsung saat item diklik (Skenario: Proyek Terpilih)
             notificationHelper.showNotification(
                 "Proyek Diakses",
@@ -252,6 +211,7 @@ class ListProyekFragment : Fragment() {
             )
             showDetailProyek(proyek)
         }
+        binding.rvProyek.adapter = proyekAdapter
     }
 
     private fun showDetailProyek(proyek: DataProyek) {

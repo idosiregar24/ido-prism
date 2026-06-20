@@ -27,4 +27,12 @@
 
     <color name="divider_color">#4D12223B</color>
     <color name="error_color">#E65757</color>
+    <color name="profile_primary">#021936</color>
+    <color name="profile_secondary">#B7102A</color>
+    <color name="profile_background">#F8F9FA</color>
+    <color name="profile_surface">#FFFFFF</color>
+    <color name="profile_on_surface">#191C1D</color>
+    <color name="profile_on_surface_variant">#44474E</color>
+    <color name="profile_outline_variant">#C4C6CE</color>
+    <color name="profile_primary_container">#1A2E4C</color>
 </resources>

@@ -10,5 +10,8 @@ data class DataProyek(
     val latitude: Double,
     val longitude: Double,
     val deskripsi: String,
-    val gambar: String? = null
+    val gambar: String? = null,
+    val progress: Int = 0,
+    val status: String = "Berjalan",
+    val kategori: String = "Infrastruktur"
 )

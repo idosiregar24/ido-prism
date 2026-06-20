@@ -1,6 +1,5 @@
 package com.example.ido_prism.Proyek
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +8,7 @@ import com.example.ido_prism.R
 import com.example.ido_prism.databinding.ItemProyekBinding
 
 class ProyekAdapter(
-    private val listProyek: List<DataProyek>,
+    private var listProyek: List<DataProyek>,
     private val onItemClick: (DataProyek) -> Unit
 ) : RecyclerView.Adapter<ProyekAdapter.ListViewHolder>() {
 
@@ -23,15 +22,24 @@ class ProyekAdapter(
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val proyek = listProyek[position]
         
-        // Log untuk memantau pemuatan data saat scroll
-        Log.d("ProyekAdapter", "Memuat data posisi $position: ${proyek.nama}")
-
-        holder.binding.tvNamaProyek.text = proyek.nama
-        
-        holder.binding.ivProyek.load(proyek.gambar) {
-            crossfade(true)
-            placeholder(R.drawable.bg_proyek)
-            error(R.drawable.bg_proyek)
+        with(holder.binding) {
+            tvNamaProyek.text = proyek.nama
+            tvStatus.text = proyek.status
+            progressProyek.progress = proyek.progress
+            tvProgressText.text = "Progress: ${proyek.progress}%"
+            
+            ivProyek.load(proyek.gambar) {
+                crossfade(true)
+                placeholder(R.drawable.bg_proyek)
+                error(R.drawable.bg_proyek)
+            }
+            
+            // Customize status badge background based on status
+            tvStatus.setBackgroundResource(when(proyek.status) {
+                "Selesai" -> R.drawable.bg_status_badge_finished
+                "Tertunda" -> R.drawable.bg_status_badge_delayed
+                else -> R.drawable.bg_status_badge // Default: Berjalan
+            })
         }
         
         holder.itemView.setOnClickListener {
@@ -40,4 +48,9 @@ class ProyekAdapter(
     }
 
     override fun getItemCount(): Int = listProyek.size
+
+    fun updateData(newList: List<DataProyek>) {
+        listProyek = newList
+        notifyDataSetChanged()
+    }
 }
