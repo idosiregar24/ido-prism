@@ -12,158 +12,194 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header Section with Background Drawable -->
+        <!-- Header Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_header_dashboard"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="48dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-                <ImageView
-                    android:id="@+id/ivLogoDesa"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/logo_bina_desa" />
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="end"
+                    android:layout_alignParentStart="true"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:alpha="0.8"
                         android:text="Selamat Datang,"
-                        android:textColor="#BDC3C7"
-                        android:textSize="12sp" />
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tvUsername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Warga Balam Sempurna"
+                        android:text="Ahmad Fauzi"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:cardBackgroundColor="#33FFFFFF"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_popup_reminder"
+                        app:tint="@color/white" />
+                </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="Apa yang ingin Anda akses hari ini?"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:lineSpacingExtra="4dp" />
 
-            <!-- TextInputLayout Section -->
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Search Bar -->
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Cari layanan atau info..."
-                android:textColorHint="#95A5A6"
-                app:hintTextColor="@color/white"
-                app:startIconDrawable="@drawable/ic_info"
-                app:startIconTint="@color/white"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:boxStrokeColor="@color/white"
-                app:boxBackgroundColor="#2C3E50">
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_bottom_nav_floating"
+                android:backgroundTint="#22FFFFFF"
+                android:padding="4dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="56dp"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="12dp"
+                    android:drawableTint="#CCFFFFFF"
+                    android:hint="Cari layanan, berita, atau proyek..."
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#99FFFFFF"
+                    android:textSize="14sp" />
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-24dp"
+            android:background="@drawable/bg_bottom_nav"
+            android:backgroundTint="#F8F9FA"
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- ChipGroup (Kategori) -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="Kategori Populer"
-                android:textColor="@color/blue_primary"
-                android:textStyle="bold" />
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroupFilter"
+            <!-- Category Pills -->
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:singleSelection="true"
-                app:selectionRequired="true">
+                android:layout_marginBottom="16dp">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipInformasi"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Informasi"
-                    android:checkable="true"
-                    android:checked="true"
-                    app:checkedIconVisible="true"
-                    app:checkedIconTint="@color/white"
-                    app:chipBackgroundColor="@color/chip_background_state"
-                    android:textColor="@color/chip_text_state" />
+                    android:text="Kategori Populer"
+                    android:textColor="#021936"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipPenting"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Penting"
-                    android:checkable="true"
-                    app:checkedIconVisible="true"
-                    app:checkedIconTint="@color/white"
-                    app:chipBackgroundColor="@color/chip_background_state"
-                    android:textColor="@color/chip_text_state" />
+                    app:singleLine="true"
+                    app:singleSelection="true"
+                    app:selectionRequired="true">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipPengumuman"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pengumuman"
-                    android:checkable="true"
-                    app:checkedIconVisible="true"
-                    app:checkedIconTint="@color/white"
-                    app:chipBackgroundColor="@color/chip_background_state"
-                    android:textColor="@color/chip_text_state" />
-            </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipSemua"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semua"
+                        android:checked="true"
+                        app:chipBackgroundColor="@color/chip_background_state"
+                        android:textColor="@color/chip_text_state"
+                        app:chipIcon="@drawable/ic_home"
+                        app:chipIconTint="@color/chip_text_state"
+                        app:chipIconVisible="true"/>
 
-            <!-- GridLayout untuk Menu Utama -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipInformasi"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Informasi"
+                        app:chipBackgroundColor="@color/chip_background_state"
+                        android:textColor="@color/chip_text_state" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPenting"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Penting"
+                        app:chipBackgroundColor="@color/chip_background_state"
+                        android:textColor="@color/chip_text_state" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPengumuman"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pengumuman"
+                        app:chipBackgroundColor="@color/chip_background_state"
+                        android:textColor="@color/chip_text_state" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- Service Grid -->
             <androidx.gridlayout.widget.GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:alignmentMode="alignMargins"
                 app:columnCount="2"
                 app:columnOrderPreserved="false"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="32dp">
 
-                <!-- Menu Kalkulator -->
+                <!-- Kalkulator Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardKalkulator"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
                     app:layout_columnWeight="1">
 
                     <LinearLayout
@@ -171,29 +207,35 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_home"
-                            app:tint="@color/red" />
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15B7102A"
+                            android:foreground="@android:drawable/ic_menu_agenda"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#B7102A" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="16dp"
                             android:text="Kalkulator"
+                            android:textColor="#021936"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <!-- Menu Dashboard Guru -->
+
+                <!-- Menu Guru Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardGuru"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
                     app:layout_columnWeight="1">
 
                     <LinearLayout
@@ -201,29 +243,35 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_person"
-                            app:tint="@color/blue_primary" />
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15021936"
+                            android:foreground="@drawable/ic_person"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#021936" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="16dp"
                             android:text="Menu Guru"
+                            android:textColor="#021936"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <!-- Menu Dashboard Orang Tua -->
+
+                <!-- Orang Tua Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardOrangTua"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
                     app:layout_columnWeight="1">
 
                     <LinearLayout
@@ -231,29 +279,35 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_person"
-                            app:tint="@color/blue_primary" />
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15021936"
+                            android:foreground="@drawable/ic_person"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#021936" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="16dp"
                             android:text="Orang Tua"
+                            android:textColor="#021936"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <!-- Menu Website Desa -->
+
+                <!-- Web Desa Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardWebsite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
                     app:layout_columnWeight="1">
 
                     <LinearLayout
@@ -261,30 +315,35 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_info"
-                            app:tint="@color/red" />
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15B7102A"
+                            android:foreground="@android:drawable/ic_menu_share"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#B7102A" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="16dp"
                             android:text="Web Desa"
+                            android:textColor="#021936"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Menu Aspirasi -->
+                <!-- Aspirasi Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardAspirasi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    app:cardCornerRadius="16dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
                     app:layout_columnWeight="1">
 
                     <LinearLayout
@@ -292,52 +351,72 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="20dp">
+                        android:padding="24dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@android:drawable/ic_menu_edit"
-                            app:tint="@color/blue_primary" />
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15021936"
+                            android:foreground="@android:drawable/ic_menu_edit"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#021936" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="16dp"
                             android:text="Aspirasi"
+                            android:textColor="#021936"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
             </androidx.gridlayout.widget.GridLayout>
 
-            <!-- Section Berita Populer (Horizontal) -->
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Projects Section Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="12dp"
-                android:text="Berita Populer Hari Ini"
-                android:textColor="@color/blue_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Proyek Berjalan"
+                    android:textColor="#021936"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:background="#15B7102A"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="Lihat Semua"
+                    android:textColor="#B7102A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_photo" />
 
-            <!-- Bagian List Berita Terkini (Vertical) -->
+            <!-- News Section Header -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="16dp"
                 android:text="Berita Desa Terkini"
-                android:textColor="@color/blue_primary"
+                android:textColor="#021936"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -345,20 +424,23 @@
                 android:id="@+id/rvGallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_photo" />
 
-            <!-- MaterialButton Utama -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
                 android:text="Keluar dari Akun"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="#B7102A"
                 android:textAllCaps="false"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/white"
+                app:cornerRadius="16dp"
+                app:elevation="0dp" />
 
         </LinearLayout>
     </LinearLayout>

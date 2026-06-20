@@ -30,6 +30,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private var allNewsItems: List<NewsItem> = emptyList()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +45,31 @@ class HomeFragment : Fragment() {
 
         displayUsername()
         setupClickListeners()
+        setupChipFilter()
         loadNews()
+    }
+
+    private fun setupChipFilter() {
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { _, checkedIds ->
+            val selectedId = checkedIds.firstOrNull()
+            val category = when (selectedId) {
+                binding.chipInformasi.id -> "Informasi"
+                binding.chipPenting.id -> "Penting"
+                binding.chipPengumuman.id -> "Pengumuman"
+                else -> "Semua"
+            }
+            filterNews(category)
+        }
+    }
+
+    private fun filterNews(category: String) {
+        val filteredList = if (category == "Semua") {
+            allNewsItems
+        } else {
+            allNewsItems.filter { it.category == category }
+        }
+        
+        binding.rvGallery.adapter = PhotoAdapter(filteredList)
     }
 
     private fun loadNews() {
@@ -55,7 +81,7 @@ class HomeFragment : Fragment() {
                 val users = PhotoApiClient.newsService.getUsers()
 
                 // 2. Gabungkan data menjadi List NewsItem dengan proteksi users.size
-                val newsItems = posts.mapIndexed { index, post ->
+                allNewsItems = posts.mapIndexed { index, post ->
                     val photo = photos.getOrNull(index)
                     val user = if (users.isNotEmpty()) users[index % users.size] else null
 
@@ -66,16 +92,16 @@ class HomeFragment : Fragment() {
                         imageUrl = photo?.download_url ?: "https://picsum.photos/id/${index + 20}/800/600",
                         date = "${(index % 28) + 1} Mei 2024",
                         category = when(index % 3) {
-                            0 -> "Pembangunan"
-                            1 -> "Sosial"
-                            else -> "Ekonomi"
+                            0 -> "Informasi"
+                            1 -> "Penting"
+                            else -> "Pengumuman"
                         },
                         author = user?.name ?: "Admin Desa"
                     )
                 }
 
                 // 3. Tampilkan di RecyclerView Populer (Horizontal)
-                val popularItems = newsItems.shuffled().take(10)
+                val popularItems = allNewsItems.shuffled().take(10)
                 binding.rvPopular.apply {
                     layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                     adapter = PopularNewsAdapter(popularItems)
@@ -84,7 +110,7 @@ class HomeFragment : Fragment() {
                 // 4. Tampilkan di RecyclerView Terkini (Vertical)
                 binding.rvGallery.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = PhotoAdapter(newsItems)
+                    adapter = PhotoAdapter(allNewsItems)
                     isNestedScrollingEnabled = false
                 }
 
