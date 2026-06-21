@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.example.ido_prism.Home.HomeFragment
 import com.example.ido_prism.About.AboutFragment
@@ -37,7 +38,11 @@ class BaseActivity : AppCompatActivity() {
 
         // Digunakan ketika kita ingin menampilkan fragment pertama kali muncul pada saat membuka
         // Base Activity
-        replaceFragment(HomeFragment())
+        if (intent.getBooleanExtra("FROM_NOTIFICATION", false)) {
+            handleNotificationIntent(intent)
+        } else {
+            replaceFragment(HomeFragment())
+        }
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
@@ -71,5 +76,29 @@ class BaseActivity : AppCompatActivity() {
             .replace(binding.fragmentContainer.id, fragment)
             // .addToBackStack(null) -> ini kita nonaktifkan agar saat back langsung keluar aplikasi
             .commit()
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleNotificationIntent(intent)
+    }
+
+    private fun handleNotificationIntent(intent: Intent?) {
+        val fromNotif = intent?.getBooleanExtra("FROM_NOTIFICATION", false) ?: false
+        if (fromNotif) {
+            val proyekId = intent?.getStringExtra("PROYEK_ID")
+            
+            // Pindah ke tab Proyek secara visual
+            binding.bottomNavView.selectedItemId = R.id.nav_proyek
+            
+            // Buat fragment baru dengan argumen proyekId
+            val fragment = ProyekFragment().apply {
+                arguments = Bundle().apply {
+                    putString("TARGET_PROYEK_ID", proyekId)
+                }
+            }
+            replaceFragment(fragment)
+        }
     }
 }

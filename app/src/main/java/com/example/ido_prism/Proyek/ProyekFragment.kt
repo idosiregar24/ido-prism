@@ -37,12 +37,20 @@ class ProyekFragment : Fragment() {
         }.attach()
     }
 
-    private class ProyekPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+    private class ProyekPagerAdapter(val fragment: Fragment) : FragmentStateAdapter(fragment) {
         override fun getItemCount(): Int = 2
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> ListProyekFragment()
+                0 -> {
+                    // Ambil ID dari arguments ProyekFragment dan teruskan ke ListProyekFragment
+                    val proyekId = fragment.arguments?.getString("TARGET_PROYEK_ID")
+                    ListProyekFragment().apply {
+                        arguments = Bundle().apply {
+                            putString("OPEN_DETAIL_ID", proyekId)
+                        }
+                    }
+                }
                 1 -> ListKontraktorFragment()
                 else -> ListProyekFragment()
             }

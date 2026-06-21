@@ -184,6 +184,16 @@ class ListProyekFragment : Fragment() {
         binding.fabAddNote.setOnClickListener {
             Toast.makeText(requireContext(), "Fitur Tambah Proyek/Catatan", Toast.LENGTH_SHORT).show()
         }
+
+        // Handle auto-open detail from notification
+        arguments?.getString("OPEN_DETAIL_ID")?.let { openDetailId ->
+            fullProyekList.find { it.kode == openDetailId }?.let { proyek ->
+                view.post {
+                    showDetailProyek(proyek)
+                }
+            }
+            arguments?.remove("OPEN_DETAIL_ID")
+        }
     }
 
     private fun setupChipFilter() {
