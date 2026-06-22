@@ -169,17 +169,27 @@ class HomeFragment : Fragment() {
                     putBoolean("isLogin", false)
                 }
 
+                // Menampilkan Snackbar umpan balik sebelum logout
                 Snackbar.make(binding.root, "Permintaan Anda Disetujui", Snackbar.LENGTH_SHORT).show()
 
-                Intent(requireContext(), LoginActivity::class.java).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                }.also { intent ->
-                    startActivity(intent)
-                    requireActivity().finish()
-                }
+                // Memberikan jeda singkat (misal 1 detik) agar Snackbar sempat terbaca sebelum pindah halaman
+                binding.root.postDelayed({
+                    if (isAdded) {
+                        Intent(requireContext(), LoginActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }.also { intent ->
+                            startActivity(intent)
+                            requireActivity().finish()
+                        }
+                    }
+                }, 1000)
             }
             .setNegativeButton("Tidak") { dialog, _ ->
                 dialog.dismiss()
+                // Menghapus AnchorView agar Snackbar tampil Full-Width di bagian bawah fragment
+                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK") { }
+                    .show()
             }
             .show()
     }
