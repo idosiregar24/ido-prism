@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -88,11 +89,13 @@ class GeometricActivity : AppCompatActivity() {
     private fun setupListeners() {
         btnHitungSegitiga.setOnClickListener {
             Log.d(TAG, "Tombol Hitung Segitiga ditekan")
+            Toast.makeText(this, "Menghitung Luas Segitiga...", Toast.LENGTH_SHORT).show()
             hitungSegitiga()
         }
 
         btnHitungBalok.setOnClickListener {
             Log.d(TAG, "Tombol Hitung Balok ditekan")
+            Toast.makeText(this, "Menghitung Volume Balok...", Toast.LENGTH_SHORT).show()
             hitungBalok()
         }
     }
@@ -123,7 +126,9 @@ class GeometricActivity : AppCompatActivity() {
         // Hitung dan tampilkan hasil ke tvHasilSegitiga
         val hasil = 0.5 * alas * tinggi
         Log.d(TAG, "hitungSegitiga: alas=$alas, tinggi=$tinggi, hasil=$hasil")
-        tvHasilSegitiga.text = formatHasil(hasil)
+        val hasilFormatted = formatHasil(hasil)
+        tvHasilSegitiga.text = hasilFormatted
+        Toast.makeText(this, "Luas Segitiga: $hasilFormatted", Toast.LENGTH_SHORT).show()
     }
 
     // ── Fungsi hitung Volume Balok ────────────────────────
@@ -154,7 +159,9 @@ class GeometricActivity : AppCompatActivity() {
         // Hitung dan tampilkan hasil ke tvHasilBalok
         val hasil = panjang * lebar * tinggi
         Log.d(TAG, "hitungBalok: panjang=$panjang, lebar=$lebar, tinggi=$tinggi, hasil=$hasil")
-        tvHasilBalok.text = formatHasil(hasil)
+        val hasilFormatted = formatHasil(hasil)
+        tvHasilBalok.text = hasilFormatted
+        Toast.makeText(this, "Volume Balok: $hasilFormatted", Toast.LENGTH_SHORT).show()
     }
 
     // ── Format angka hasil ────────────────────────────────
