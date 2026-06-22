@@ -19,6 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/blue_primary"
             app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:subtitleTextColor="@android:color/white"
             app:titleTextColor="@android:color/white" />
 

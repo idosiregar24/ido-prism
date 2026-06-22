@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.ido_prism.R
 import com.example.ido_prism.databinding.ActivityDashboardGuruBinding
 
 class DashboardGuruActivity : AppCompatActivity() {
@@ -46,10 +47,23 @@ class DashboardGuruActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            R.id.action_search -> {
+                android.widget.Toast.makeText(this, "Mencari Data Guru/Siswa...", android.widget.Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_settings -> {
+                android.widget.Toast.makeText(this, "Membuka Pengaturan Dashboard...", android.widget.Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

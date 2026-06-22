@@ -42,6 +42,11 @@ class WebViewBinaDesaActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -50,6 +55,14 @@ class WebViewBinaDesaActivity : AppCompatActivity() {
                 } else {
                     onBackPressedDispatcher.onBackPressed()
                 }
+                true
+            }
+            R.id.action_search -> {
+                android.widget.Toast.makeText(this, "Mencari di Portal Desa...", android.widget.Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_settings -> {
+                android.widget.Toast.makeText(this, "Membuka Pengaturan Portal...", android.widget.Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
