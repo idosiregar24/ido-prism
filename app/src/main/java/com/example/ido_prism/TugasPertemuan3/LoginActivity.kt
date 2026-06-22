@@ -49,6 +49,9 @@ class LoginActivity : AppCompatActivity() {
                 editor.putString("username", username)
                 editor.apply()
 
+                // Menampilkan Toast saat pindah activity
+                Toast.makeText(this, "Login Berhasil! Selamat Datang $username", Toast.LENGTH_SHORT).show()
+
                 // Navigasi ke BaseActivity (Home)
                 val intent = Intent(this, com.example.ido_prism.BaseActivity::class.java)
                 startActivity(intent)
