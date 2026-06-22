@@ -69,6 +69,25 @@ class GeometricActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onCreateOptionsMenu(menu: android.view.Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_search -> {
+                Toast.makeText(this, "Fitur Pencarian dipilih", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_settings -> {
+                Toast.makeText(this, "Fitur Pengaturan dipilih", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     // Menghubungkan variabel Kotlin ke komponen XML berdasarkan ID
     private fun initViews() {
         // Segitiga — ID sesuai activity_main.xml
