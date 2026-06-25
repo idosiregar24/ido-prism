@@ -29,10 +29,18 @@ class ProyekFragment : Fragment() {
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Proyek"
-                1 -> "Kontraktor"
-                else -> null
+            when (position) {
+                0 -> {
+                    tab.text = "Proyek"
+                    tab.setIcon(com.example.ido_prism.R.drawable.ic_notes)
+                }
+                1 -> {
+                    tab.text = "Kontraktor"
+                    tab.setIcon(com.example.ido_prism.R.drawable.ic_person)
+                    val badge = tab.orCreateBadge
+                    badge.isVisible = true
+                    badge.number = 7
+                }
             }
         }.attach()
     }
