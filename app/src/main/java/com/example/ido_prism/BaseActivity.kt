@@ -54,8 +54,8 @@ class BaseActivity : AppCompatActivity() {
                     replaceFragment(ProyekFragment())
                     true
                 }
-                R.id.nav_note -> {
-                    replaceFragment(com.example.ido_prism.Note.FragmentNote())
+                R.id.nav_aspirasi -> {
+                    replaceFragment(com.example.ido_prism.Aspirasi.FragmentAspirasi())
                     true
                 }
                 R.id.nav_profile -> {
