@@ -147,6 +147,11 @@ class HomeFragment : Fragment() {
             (activity as? com.example.ido_prism.BaseActivity)?.replaceFragment(com.example.ido_prism.Aspirasi.FragmentAspirasi())
         }
 
+        binding.cardDigitalDesa.setOnClickListener {
+            val intent = Intent(requireContext(), com.example.ido_prism.DigitalDesa.DigitalDesaActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnLogout.setOnClickListener {
             showLogoutConfirmation()
         }

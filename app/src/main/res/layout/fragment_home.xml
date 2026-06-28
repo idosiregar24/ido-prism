@@ -372,6 +372,42 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+                <!-- Digital Desa Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDigitalDesa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+
+                        <View
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:background="@drawable/bg_bottom_nav_floating"
+                            android:backgroundTint="#15B7102A"
+                            android:foreground="@android:drawable/ic_menu_camera"
+                            android:foregroundGravity="center"
+                            android:foregroundTint="#B7102A" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Digital Desa"
+                            android:textColor="#021936"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </androidx.gridlayout.widget.GridLayout>
 
             <!-- Projects Section Header -->

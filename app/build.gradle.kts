@@ -48,7 +48,18 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.glide)
 
-    
+    // CameraX
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+
+    // ML Kit Barcode Scanning
+    implementation(libs.mlkit.barcode.scanning)
+
+    // ZXing for QR Generation
+    implementation(libs.zxing.android.embedded)
+
     // Coil for image loading
     implementation("io.coil-kt:coil:2.7.0")
 
